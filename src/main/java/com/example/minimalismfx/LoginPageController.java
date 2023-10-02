@@ -1,23 +1,48 @@
 package com.example.minimalismfx;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
-public class LoginPageController extends Application {
+public class LoginPageController {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
+    @FXML
+    private Button loginButton;
 
-        primaryStage.setTitle("Login");
-        primaryStage.setScene(new Scene(root, 400, 300));
-        primaryStage.show();
+    @FXML
+    private Label loginLabel;
+
+    @FXML
+    private ComboBox<?> loginTypeComboBox;
+
+    @FXML
+    private PasswordField passwordField;
+
+    @FXML
+    private TextField usernameField;
+
+    @FXML
+    void setUpLoginButton(ActionEvent event) {
+
     }
 
-    public static void main (String[] args) {
-        launch(args);
+    @FXML
+    void setUpLoginTypeComboBox(ActionEvent event) {
+
     }
+
+    @FXML
+    void setUpPasswordField(ActionEvent event) {
+
+    }
+
+    @FXML
+    void setUpUsernameField(ActionEvent event) {
+
+    }
+
 }
