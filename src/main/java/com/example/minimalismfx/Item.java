@@ -64,7 +64,7 @@ public class Item {
                 System.out.println(itemRow);
             }
         } catch (FileNotFoundException e) {
-            System.err.println("Hey, we couldn't find the file: " + e);
+            System.err.println("Hey, we couldn't find the item: " + e);
         }
     }
 
