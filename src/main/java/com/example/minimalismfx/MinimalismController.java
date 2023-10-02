@@ -91,12 +91,17 @@ public class MinimalismController {
     }
 
     @FXML
-    void SetUpAddToCart(ActionEvent event) {
+    void SetUpAddToCartJumper(ActionEvent event) {
 
     }
 
     @FXML
     void SetUpAddToCartTrousers(ActionEvent event) {
+
+    }
+
+    @FXML
+    void SetUpAddToCartTshirt(ActionEvent event) {
 
     }
 

@@ -25,7 +25,7 @@
             <ImageView fx:id="ImageTshirt" fitHeight="158.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" />
             <HBox alignment="BOTTOM_CENTER" prefHeight="75.0" prefWidth="244.0">
                <children>
-                  <Button fx:id="AddCartTshirt" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#SetUpAddToCart" text="Add to Cart" />
+                  <Button fx:id="AddCartTshirt" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#SetUpAddToCartTshirt" text="Add to Cart" />
                   <Button fx:id="decreaseQuantityTshirt" mnemonicParsing="false" onAction="#DecreaseItemTshirt" text="-" translateX="10.0" />
                   <Button fx:id="addQuantityTshirt" mnemonicParsing="false" onAction="#IncreaseItemTshirt" text="+" translateX="20.0" />
                   <HBox prefHeight="52.0" prefWidth="66.0">
@@ -63,7 +63,7 @@
             <ImageView fx:id="ImageJumper" fitHeight="158.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" />
             <HBox alignment="BOTTOM_CENTER" prefHeight="75.0" prefWidth="244.0">
                <children>
-                  <Button fx:id="AddCartJumper" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#SetUpAddToCart" text="Add to Cart" />
+                  <Button fx:id="AddCartJumper" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#SetUpAddToCartJumper" text="Add to Cart" />
                   <Button fx:id="decreaseQuantityJumper" mnemonicParsing="false" onAction="#DecreaseItemJumper" text="-" translateX="10.0" />
                   <Button fx:id="addQuantityJumper" mnemonicParsing="false" onAction="#AddItemJumper" text="+" translateX="20.0" />
                   <HBox prefHeight="52.0" prefWidth="66.0">
