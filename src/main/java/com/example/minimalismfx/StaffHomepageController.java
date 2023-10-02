@@ -1,5 +1,6 @@
 package com.example.minimalismfx;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
@@ -71,5 +72,49 @@ public class StaffHomepageController {
     @FXML
     private Text totalSalesHeading;
 
-}
+    @FXML
+    void confirmStockChange1(ActionEvent event) {
 
+    }
+
+    @FXML
+    void confirmStockChange2(ActionEvent event) {
+
+    }
+
+    @FXML
+    void confirmStockChange3(ActionEvent event) {
+
+    }
+
+    @FXML
+    void decrementCounter1(ActionEvent event) {
+
+    }
+
+    @FXML
+    void decrementCounter2(ActionEvent event) {
+
+    }
+
+    @FXML
+    void decrementCounter3(ActionEvent event) {
+
+    }
+
+    @FXML
+    void incrementCounter1(ActionEvent event) {
+
+    }
+
+    @FXML
+    void incrementCounter2(ActionEvent event) {
+
+    }
+
+    @FXML
+    void incrementCounter3(ActionEvent event) {
+
+    }
+
+}
