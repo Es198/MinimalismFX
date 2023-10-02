@@ -3,12 +3,12 @@ package com.example.minimalismfx;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.ImageView;
-import javafx.scene.control.TextField;
-
 
 public class MinimalismController {
 
@@ -29,15 +29,6 @@ public class MinimalismController {
 
     @FXML
     private Button CheckoutID;
-
-    @FXML
-    private TextField FinalQuantityJumper;
-
-    @FXML
-    private TextField FinalQuantityTrousers;
-
-    @FXML
-    private TextField FinalQuantityTshirt;
 
     @FXML
     private ImageView ImageJumper;
@@ -70,14 +61,61 @@ public class MinimalismController {
     private Button decreaseQuantityTshirt;
 
     @FXML
+    void AddItemJumper(ActionEvent event) {
+
+    }
+
+    @FXML
+    void DecreaseItemJumper(ActionEvent event) {
+
+    }
+
+    @FXML
+    void DecreaseItemTrousers(ActionEvent event) {
+
+    }
+
+    @FXML
+    void DecreaseItemTshirt(ActionEvent event) {
+
+    }
+
+    @FXML
+    void IncreaseItemTshirt(ActionEvent event) {
+
+    }
+
+    @FXML
+    void IncreaseitemTrousers(ActionEvent event) {
+
+    }
+
+    @FXML
+    void SetUpAddToCartJumper(ActionEvent event) {
+
+    }
+
+    @FXML
+    void SetUpAddToCartTrousers(ActionEvent event) {
+
+    }
+
+    @FXML
+    void SetUpAddToCartTshirt(ActionEvent event) {
+
+    }
+
+    @FXML
+    void SetUpCheckout(ActionEvent event) {
+
+    }
+
+    @FXML
     void initialize() {
         assert AddCartJumper != null : "fx:id=\"AddCartJumper\" was not injected: check your FXML file 'minimalismFX.fxml'.";
         assert AddCartTrousers != null : "fx:id=\"AddCartTrousers\" was not injected: check your FXML file 'minimalismFX.fxml'.";
         assert AddCartTshirt != null : "fx:id=\"AddCartTshirt\" was not injected: check your FXML file 'minimalismFX.fxml'.";
         assert CheckoutID != null : "fx:id=\"CheckoutID\" was not injected: check your FXML file 'minimalismFX.fxml'.";
-        assert FinalQuantityJumper != null : "fx:id=\"FinalQuantityJumper\" was not injected: check your FXML file 'minimalismFX.fxml'.";
-        assert FinalQuantityTrousers != null : "fx:id=\"FinalQuantityTrousers\" was not injected: check your FXML file 'minimalismFX.fxml'.";
-        assert FinalQuantityTshirt != null : "fx:id=\"FinalQuantityTshirt\" was not injected: check your FXML file 'minimalismFX.fxml'.";
         assert ImageJumper != null : "fx:id=\"ImageJumper\" was not injected: check your FXML file 'minimalismFX.fxml'.";
         assert ImageTrousers != null : "fx:id=\"ImageTrousers\" was not injected: check your FXML file 'minimalismFX.fxml'.";
         assert ImageTshirt != null : "fx:id=\"ImageTshirt\" was not injected: check your FXML file 'minimalismFX.fxml'.";
