@@ -3,6 +3,7 @@ package com.example.minimalismfx;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 
 public class MinimalismController {
 
@@ -13,8 +14,8 @@ public class MinimalismController {
     private URL location;
 
     @FXML
-    void initialize() {
-
+    public void getTShirts() {
+        System.out.println("T-shirts");
     }
 
 }
