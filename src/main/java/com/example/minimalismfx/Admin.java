@@ -24,6 +24,16 @@ public class Admin {
         return result.toString();
     }
 
+    int calculateTotalSales(){
+        int sum = 0;
+
+        for (Order order: allOrders) {
+            sum += order.item.getItemPrice * order.quantity;
+        }
+
+        return sum;
+    }
+
 
 
 
