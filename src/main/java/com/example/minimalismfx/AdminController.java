@@ -74,6 +74,19 @@ public class AdminController {
 
     @FXML
     void confirmStockChange(ActionEvent event) {
+        if(event.getSource() == item1ConfirmButton) {
+            int count = Integer.parseInt(item1Count.getText());
+            item1Count.setText("0");
+
+
+        } else if (event.getSource() == item2ConfirmButton) {
+            int count = Integer.parseInt(item2Count.getText()) - 1;
+            item2Count.setText(String.valueOf(count));
+        } else if (event.getSource() == item3ConfirmButton) {
+            int count = Integer.parseInt(item3Count.getText()) - 1;
+            item3Count.setText(String.valueOf(count));
+        }
+
     }
 
     @FXML
