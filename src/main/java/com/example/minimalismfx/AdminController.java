@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-public class StaffHomepageController {
+public class AdminController {
 
     @FXML
     private Text allOrdersHeading;
