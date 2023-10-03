@@ -78,7 +78,6 @@ public class AdminController {
 
     @FXML
     void decrementCounter(ActionEvent event) {
-        
         if(event.getSource() == item1MinusButton) {
             int count = Integer.parseInt(item1Count.getText()) - 1;
             item1Count.setText(String.valueOf(count));
@@ -89,12 +88,20 @@ public class AdminController {
             int count = Integer.parseInt(item3Count.getText()) - 1;
             item3Count.setText(String.valueOf(count));
         }
-
     }
 
     @FXML
     void incrementCounter(ActionEvent event) {
-
+        if(event.getSource() == item1PlusButton) {
+            int count = Integer.parseInt(item1Count.getText()) + 1;
+            item1Count.setText(String.valueOf(count));
+        } else if (event.getSource() == item2PlusButton) {
+            int count = Integer.parseInt(item2Count.getText()) + 1;
+            item2Count.setText(String.valueOf(count));
+        } else if (event.getSource() == item3PlusButton) {
+            int count = Integer.parseInt(item3Count.getText()) + 1;
+            item3Count.setText(String.valueOf(count));
+        }
     }
 
 }
