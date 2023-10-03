@@ -2,6 +2,7 @@ package com.example.minimalismfx;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Item {
@@ -56,16 +57,26 @@ public class Item {
         return itemName + ", " + itemSize + ", " + itemPrice + ", " + itemStock;
     }
 
-    public void readingCSVFile() {
-        try (Scanner txtScanner = new Scanner(new File(""))) {
-            while(txtScanner.hasNextLine()) {
+    public static ArrayList<Item> readingCSVFile(String filePath) throws FileNotFoundException {
+        ArrayList<Item> items = new ArrayList<>();
+
+        try (Scanner txtScanner = new Scanner(new File(filePath))) {
+            while (txtScanner.hasNextLine()) {
                 String line = txtScanner.nextLine();
                 String[] itemRow = line.split(",");
-                System.out.println(itemRow);
+                if (itemRow.length == 4) {
+                    String itemName = itemRow[0].trim();
+                    String itemSize = itemRow[1].trim();
+                    double itemPrice = Double.parseDouble(itemRow[2].trim());
+                    int itemStock = Integer.parseInt(itemRow[3].trim());
+                    items.add(new Item(itemName, itemSize, itemPrice, itemStock));
+                }
             }
         } catch (FileNotFoundException e) {
-            System.err.println("Hey, we couldn't find the item: " + e);
+            throw new FileNotFoundException("Hey, we couldn't find the item: " + e);
         }
+
+        return items;
     }
 
 
