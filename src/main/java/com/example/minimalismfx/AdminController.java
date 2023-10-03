@@ -73,47 +73,16 @@ public class AdminController {
     private Text totalSalesHeading;
 
     @FXML
-    void confirmStockChange1(ActionEvent event) {
+    void confirmStockChange(ActionEvent event) {
+    }
+
+    @FXML
+    void decrementCounter(ActionEvent event) {
 
     }
 
     @FXML
-    void confirmStockChange2(ActionEvent event) {
-
-    }
-
-    @FXML
-    void confirmStockChange3(ActionEvent event) {
-
-    }
-
-    @FXML
-    void decrementCounter1(ActionEvent event) {
-
-    }
-
-    @FXML
-    void decrementCounter2(ActionEvent event) {
-
-    }
-
-    @FXML
-    void decrementCounter3(ActionEvent event) {
-
-    }
-
-    @FXML
-    void incrementCounter1(ActionEvent event) {
-
-    }
-
-    @FXML
-    void incrementCounter2(ActionEvent event) {
-
-    }
-
-    @FXML
-    void incrementCounter3(ActionEvent event) {
+    void incrementCounter(ActionEvent event) {
 
     }
 
