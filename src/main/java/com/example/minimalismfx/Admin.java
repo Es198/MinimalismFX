@@ -15,7 +15,13 @@ public class Admin {
 
 
     String displayAllOrders(){
-        return "";
+        StringBuilder result = new StringBuilder();
+
+        for (Order order: allOrders) {
+            result.append(order.toString()).append("\n");
+        }
+
+        return result.toString();
     }
 
 

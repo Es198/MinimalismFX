@@ -15,6 +15,10 @@ public class Order {
                 this.orderDateTime = orderDateTime;
         }
 
+        public String toString(){
+                return userName + ": " + item.toString() + quantity + orderDateTime;
+        }
+
 
 
 
