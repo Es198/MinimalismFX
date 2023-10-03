@@ -28,7 +28,7 @@ public class Admin {
         int sum = 0;
 
         for (Order order: allOrders) {
-            sum += order.item.getItemPrice * order.quantity;
+            sum += order.getItem().getItemPrice() * order.getQuantity();
         }
 
         return sum;
