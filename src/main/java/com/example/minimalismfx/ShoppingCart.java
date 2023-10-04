@@ -60,6 +60,8 @@ public class ShoppingCart {
         for(Map.Entry<Item, Integer> entry : cartItems.entrySet()) {
             totalPrice += entry.getKey().getItemPrice() * entry.getValue();
         }
+        // Round the total price to 2 decimal places
+        totalPrice = Math.round(totalPrice * 100.0) / 100.0;
         return totalPrice;
     }
 
