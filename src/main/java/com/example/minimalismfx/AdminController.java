@@ -76,8 +76,6 @@ public class AdminController {
     @FXML
     private Text ordersList;
 
-    @FXML
-    private BarChart<?, ?> stockChart;
 
     @FXML
     private Text stockChartHeading;

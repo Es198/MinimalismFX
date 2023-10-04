@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -73,33 +72,33 @@
          </HBox>
       </children>
    </VBox>
-   <BarChart fx:id="stockChart" layoutX="8.0" layoutY="64.0" prefHeight="150.0" prefWidth="59.0">
-     <xAxis>
-       <CategoryAxis side="BOTTOM" />
-     </xAxis>
-     <yAxis>
-       <NumberAxis side="LEFT" />
-     </yAxis>
-   </BarChart>
-   <Text fx:id="stockChartHeading" layoutX="61.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Levels">
+   <Text fx:id="stockChartHeading" layoutX="77.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Levels">
       <font>
          <Font size="20.0" />
       </font></Text>
-   <Text fx:id="allOrdersHeading" layoutX="257.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Orders">
+   <Text fx:id="allOrdersHeading" layoutX="307.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Orders">
       <font>
          <Font size="20.0" />
       </font>
    </Text>
-   <Text fx:id="totalSalesHeading" layoutX="447.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Sales">
+   <Text fx:id="totalSalesHeading" layoutX="488.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Sales">
       <font>
          <Font size="20.0" />
       </font>
    </Text>
-   <Text fx:id="totalSalesAmount" layoutX="483.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="£0">
+   <Text fx:id="totalSalesAmount" layoutX="525.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="£0">
       <font>
          <Font size="20.0" />
       </font>
    </Text>
-   <Text fx:id="ordersList" layoutX="239.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item 1 - Date - Amount" />
+   <Text fx:id="ordersList" layoutX="293.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item 1 - Date - Amount" />
+   <TableView fx:id="stockTable" layoutX="15.0" layoutY="68.0" prefHeight="141.0" prefWidth="239.0">
+     <columns>
+       <TableColumn prefWidth="54.0" text="Item" />
+       <TableColumn prefWidth="57.0" text="Size" />
+         <TableColumn minWidth="0.0" prefWidth="63.0" text="Price" />
+         <TableColumn prefWidth="64.0" text="Stock" />
+     </columns>
+   </TableView>
 
 </AnchorPane>
