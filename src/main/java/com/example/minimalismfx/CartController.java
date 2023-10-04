@@ -33,7 +33,7 @@ public class CartController {
     private Button checkoutButton;
 
     @FXML
-    private TextArea piriceTextArea;
+    private Text confirmationOfOrderText;
 
 
 
@@ -78,7 +78,6 @@ public class CartController {
     @FXML
     void initialize(URL url, ResourceBundle resourceBundle) {
         double totalPrice = cart.calculateTotalValueOfShoppingCart();
-        piriceTextArea.setText("£" + totalPrice);
         cartTotalPriceText.setText("£" + totalPrice);
     }
 
