@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="427.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.minimalismfx.CartController">
    <children>
       <Button fx:id="checkoutButton" layoutX="432.0" layoutY="339.0" mnemonicParsing="false" onAction="#setUpCheckoutHandler" style="-fx-background-color: #448a1f;" text="Checkout" textFill="#070707" />
@@ -15,6 +14,6 @@
       <TextField fx:id="cartAddressTextField" alignment="CENTER" layoutX="387.0" layoutY="271.0" onAction="#userAddressCartTextField" promptText="Address" />
       <Text fx:id="cartTotalPriceText" layoutX="421.0" layoutY="74.0" onDragDetected="#totalPriceTextAction" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="93.0" />
       <Label fx:id="cartTotalPriceLabel" layoutX="438.0" layoutY="26.0" text="Total Price" />
-      <Text fx:id="confirmationOfOrderText" layoutX="455.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="confirmationOfOrderText" fill="#0e57ea" layoutX="455.0" layoutY="396.0" strokeType="OUTSIDE" strokeWidth="0.0" />
    </children>
 </AnchorPane>
