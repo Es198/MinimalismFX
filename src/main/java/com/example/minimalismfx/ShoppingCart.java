@@ -13,6 +13,7 @@ public class ShoppingCart {
     ArrayList<Item> items = new ArrayList<>();
     HashMap<Item, Integer> cartItems = new HashMap<>();
 
+
     public void readingCSVFile(String filePath) throws FileNotFoundException {
 
         try (Scanner txtScanner = new Scanner(new File(filePath))) {
@@ -22,7 +23,8 @@ public class ShoppingCart {
                 if (itemRow.length == 4) {
                     String itemName = itemRow[0].trim();
                     String itemSize = itemRow[1].trim();
-                    double itemPrice = Double.parseDouble(itemRow[2].trim());
+                    String itemPriceStr = itemRow[2].trim().replaceAll("[^0-9.]", ""); // Remove non-numeric characters
+                    double itemPrice = Double.parseDouble(itemPriceStr);
                     int itemStock = java.lang.Integer.parseInt(itemRow[3].trim());
                     items.add(new Item(itemName, itemSize, itemPrice, itemStock));
                 }
@@ -59,5 +61,7 @@ public class ShoppingCart {
         }
         return totalPrice;
     }
+
+
 
 }

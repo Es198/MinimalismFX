@@ -11,7 +11,7 @@ public class Item {
     private String itemSize;
     private double itemPrice;
     private int itemStock;
-    String pathName = "";
+    String pathName = "src/main/resources/com/example/minimalismfx/itemFile.csv";
     File itemText = new File(pathName);
 
     public Item(String itemName, String itemSize, double itemPrice, int itemStock) {
