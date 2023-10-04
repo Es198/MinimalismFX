@@ -10,7 +10,10 @@
         <children>
             <VBox>
                 <children>
-                    <ImageView fitHeight="119.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true" />
+                    <ImageView fitHeight="119.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true" translateX="25.0">
+                  <image>
+                     <Image url="@tshirt.png" />
+                  </image></ImageView>
                 </children>
             </VBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="101.0">
@@ -32,7 +35,10 @@
       <children>
          <VBox>
             <children>
-               <ImageView fitHeight="119.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true" />
+               <ImageView fitHeight="119.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true" translateX="30.0">
+                  <image>
+                     <Image url="@jumper.jpg" />
+                  </image></ImageView>
             </children>
          </VBox>
          <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="101.0">
@@ -54,7 +60,10 @@
       <children>
          <VBox>
             <children>
-               <ImageView fitHeight="119.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true" />
+               <ImageView fitHeight="119.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true" translateX="25.0">
+                  <image>
+                     <Image url="@trousers.jpg" />
+                  </image></ImageView>
             </children>
          </VBox>
          <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="101.0">
