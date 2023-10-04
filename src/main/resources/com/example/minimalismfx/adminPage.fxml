@@ -23,7 +23,7 @@
                   </font>
                </Text>
                     <Button fx:id="tshirtPlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
-               <ChoiceBox prefHeight="25.0" prefWidth="8.0" />
+               <ChoiceBox fx:id="tshirtSizeBox" prefHeight="25.0" prefWidth="8.0" />
                <Button fx:id="tshirtConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
                 </children>
             </HBox>
@@ -45,7 +45,7 @@
                   </font>
                </Text>
                <Button fx:id="jumperPlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
-               <ChoiceBox prefHeight="25.0" prefWidth="8.0" />
+               <ChoiceBox fx:id="jumperSizeBox" prefHeight="25.0" prefWidth="8.0" />
                <Button fx:id="jumperConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
             </children>
          </HBox>
@@ -67,7 +67,7 @@
                   </font>
                </Text>
                <Button fx:id="trouserPlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
-               <ChoiceBox prefHeight="25.0" prefWidth="8.0" />
+               <ChoiceBox fx:id="trouserSizeBox" prefHeight="25.0" prefWidth="8.0" />
                <Button fx:id="trouserConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
             </children>
          </HBox>
