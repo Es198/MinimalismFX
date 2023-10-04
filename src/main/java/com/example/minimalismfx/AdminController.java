@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
@@ -107,6 +106,7 @@ public class AdminController {
     ShoppingCart cart = new ShoppingCart();
     ArrayList<Item> items;
 
+
     public void initialize() throws FileNotFoundException {
         items = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
         populateSizeChoiceBoxes();
@@ -121,11 +121,11 @@ public class AdminController {
     }
 
     private void populateStockTable(){
+        ObservableList<Item> data = FXCollections.observableArrayList();
         itemNameCol.setCellValueFactory(new PropertyValueFactory<>("itemName"));
         itemSizeCol.setCellValueFactory(new PropertyValueFactory<>("itemSize"));
         itemPriceCol.setCellValueFactory(new PropertyValueFactory<>("itemPrice"));
         itemStockCol.setCellValueFactory(new PropertyValueFactory<>("itemStock"));
-        ObservableList<Item> data = FXCollections.observableArrayList();
         data.addAll(items);
         stockTable.setItems(data);
     }
@@ -152,7 +152,7 @@ public class AdminController {
         for(Item item: items){
             if(itemName.equals(item.getItemName()) && size.equals(item.getItemSize())) {
                 int availableStock = item.getItemStock();
-                int quantity = Integer.parseInt(trouserCount.getText());
+                int quantity = Integer.parseInt(countText.getText());
                 int newStock = availableStock + quantity;
 
                 if((newStock) < 0) {
@@ -161,6 +161,7 @@ public class AdminController {
                     item.setItemStock(newStock);
                     countText.setText("0");
                     countText.setFill(Color.BLACK);
+                    stockTable.refresh();
                 }
                 return;
             }

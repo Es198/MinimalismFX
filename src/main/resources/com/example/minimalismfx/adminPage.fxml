@@ -96,7 +96,7 @@
      <columns>
        <TableColumn fx:id="itemNameCol" prefWidth="54.0" text="Item" />
        <TableColumn fx:id="itemSizeCol" prefWidth="57.0" text="Size" />
-        <TableColumn fx:id="itemPriceCol" minWidth="0.0" prefWidth="63.0" text="Price" />
+        <TableColumn fx:id="itemPriceCol" minWidth="0.0" prefWidth="63.0" text="Price (£)" />
         <TableColumn fx:id="itemStockCol" prefWidth="64.0" text="Stock" />
      </columns>
    </TableView>
