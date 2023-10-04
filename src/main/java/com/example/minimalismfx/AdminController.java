@@ -16,49 +16,49 @@ public class AdminController {
     private Text allOrdersHeading;
 
     @FXML
-    private Button item1ConfirmButton;
+    private Button tshirtConfirmButton;
 
     @FXML
-    private Text item1Count;
+    private Text tshirtCount;
 
     @FXML
-    private Button item1MinusButton;
+    private Button tshirtMinusButton;
 
     @FXML
-    private Button item1PlusButton;
+    private Button tshirtPlusButton;
 
     @FXML
-    private VBox item1VBox;
+    private VBox tshirtVBox;
 
     @FXML
-    private Button item2ConfirmButton;
+    private Button jumperConfirmButton;
 
     @FXML
-    private Text item2Count;
+    private Text jumperCount;
 
     @FXML
-    private Button item2MinusButton;
+    private Button jumperMinusButton;
 
     @FXML
-    private Button item2PlusButton;
+    private Button jumperPlusButton;
 
     @FXML
-    private VBox item2VBox;
+    private VBox jumperVBox;
 
     @FXML
-    private Button item3ConfirmButton;
+    private Button trouserConfirmButton;
 
     @FXML
-    private Text item3Count;
+    private Text trouserCount;
 
     @FXML
-    private Button item3MinusButton;
+    private Button trouserMinusButton;
 
     @FXML
-    private Button item3PlusButton;
+    private Button trouserPlusButton;
 
     @FXML
-    private VBox item3VBox;
+    private VBox trouserVBox;
 
     @FXML
     private Text ordersList;
@@ -80,48 +80,48 @@ public class AdminController {
         ShoppingCart cart = new ShoppingCart();
         ArrayList<Item> items = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
 
-        if(event.getSource() == item1ConfirmButton) {
-            int count = Integer.parseInt(item1Count.getText());
-            item1Count.setText("0");
+        if(event.getSource() == tshirtConfirmButton) {
+            int count = Integer.parseInt(tshirtCount.getText());
+            tshirtCount.setText("0");
 
 
 
 
-        } else if (event.getSource() == item2ConfirmButton) {
-            int count = Integer.parseInt(item2Count.getText()) - 1;
-            item2Count.setText(String.valueOf(count));
-        } else if (event.getSource() == item3ConfirmButton) {
-            int count = Integer.parseInt(item3Count.getText()) - 1;
-            item3Count.setText(String.valueOf(count));
+        } else if (event.getSource() == jumperConfirmButton) {
+            int count = Integer.parseInt(jumperCount.getText()) - 1;
+            jumperCount.setText(String.valueOf(count));
+        } else if (event.getSource() == trouserConfirmButton) {
+            int count = Integer.parseInt(trouserCount.getText()) - 1;
+            trouserCount.setText(String.valueOf(count));
         }
 
     }
 
     @FXML
     void decrementCounter(ActionEvent event) {
-        if(event.getSource() == item1MinusButton) {
-            int count = Integer.parseInt(item1Count.getText()) - 1;
-            item1Count.setText(String.valueOf(count));
-        } else if (event.getSource() == item2MinusButton) {
-            int count = Integer.parseInt(item2Count.getText()) - 1;
-            item2Count.setText(String.valueOf(count));
-        } else if (event.getSource() == item3MinusButton) {
-            int count = Integer.parseInt(item3Count.getText()) - 1;
-            item3Count.setText(String.valueOf(count));
+        if(event.getSource() == tshirtMinusButton) {
+            int count = Integer.parseInt(tshirtCount.getText()) - 1;
+            tshirtCount.setText(String.valueOf(count));
+        } else if (event.getSource() == jumperMinusButton) {
+            int count = Integer.parseInt(jumperCount.getText()) - 1;
+            jumperCount.setText(String.valueOf(count));
+        } else if (event.getSource() == trouserMinusButton) {
+            int count = Integer.parseInt(trouserCount.getText()) - 1;
+            trouserCount.setText(String.valueOf(count));
         }
     }
 
     @FXML
     void incrementCounter(ActionEvent event) {
-        if(event.getSource() == item1PlusButton) {
-            int count = Integer.parseInt(item1Count.getText()) + 1;
-            item1Count.setText(String.valueOf(count));
-        } else if (event.getSource() == item2PlusButton) {
-            int count = Integer.parseInt(item2Count.getText()) + 1;
-            item2Count.setText(String.valueOf(count));
-        } else if (event.getSource() == item3PlusButton) {
-            int count = Integer.parseInt(item3Count.getText()) + 1;
-            item3Count.setText(String.valueOf(count));
+        if(event.getSource() == tshirtPlusButton) {
+            int count = Integer.parseInt(tshirtCount.getText()) + 1;
+            tshirtCount.setText(String.valueOf(count));
+        } else if (event.getSource() == jumperPlusButton) {
+            int count = Integer.parseInt(jumperCount.getText()) + 1;
+            jumperCount.setText(String.valueOf(count));
+        } else if (event.getSource() == trouserPlusButton) {
+            int count = Integer.parseInt(trouserCount.getText()) + 1;
+            trouserCount.setText(String.valueOf(count));
         }
     }
 

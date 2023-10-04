@@ -7,7 +7,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.minimalismfx.AdminController">
-    <VBox fx:id="item1VBox" layoutX="14.0" layoutY="238.0" prefHeight="148.0" prefWidth="165.0">
+    <VBox fx:id="tshirtVBox" layoutX="14.0" layoutY="238.0" prefHeight="148.0" prefWidth="165.0">
         <children>
             <VBox>
                 <children>
@@ -16,20 +16,20 @@
             </VBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="101.0">
                 <children>
-                    <Button fx:id="item1MinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-15.0" />
-               <Text fx:id="item1Count" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-10.0">
+                    <Button fx:id="tshirtMinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-15.0" />
+               <Text fx:id="tshirtCount" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-10.0">
                   <font>
                      <Font size="20.0" />
                   </font>
                </Text>
-                    <Button fx:id="item1PlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
+                    <Button fx:id="tshirtPlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
                <ChoiceBox prefHeight="25.0" prefWidth="8.0" />
-               <Button fx:id="item1ConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
+               <Button fx:id="tshirtConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
                 </children>
             </HBox>
         </children>
     </VBox>
-   <VBox fx:id="item2VBox" layoutX="218.0" layoutY="238.0" prefHeight="148.0" prefWidth="165.0">
+   <VBox fx:id="jumperVBox" layoutX="218.0" layoutY="238.0" prefHeight="148.0" prefWidth="165.0">
       <children>
          <VBox>
             <children>
@@ -38,15 +38,15 @@
          </VBox>
          <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="101.0">
             <children>
-               <Button fx:id="item2MinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-15.0" />
-               <Text fx:id="item2Count" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-10.0">
+               <Button fx:id="jumperMinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-15.0" />
+               <Text fx:id="jumperCount" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-10.0">
                   <font>
                      <Font size="20.0" />
                   </font>
                </Text>
-               <Button fx:id="item2PlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
+               <Button fx:id="jumperPlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
                <ChoiceBox prefHeight="25.0" prefWidth="8.0" />
-               <Button fx:id="item2ConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
+               <Button fx:id="jumperConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
             </children>
          </HBox>
       </children>
@@ -60,15 +60,15 @@
          </VBox>
          <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="101.0">
             <children>
-               <Button fx:id="item3MinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-15.0" />
-               <Text fx:id="item3Count" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-10.0">
+               <Button fx:id="trouserMinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-15.0" />
+               <Text fx:id="trouserCount" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-10.0">
                   <font>
                      <Font size="20.0" />
                   </font>
                </Text>
-               <Button fx:id="item3PlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
+               <Button fx:id="trouserPlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
                <ChoiceBox prefHeight="25.0" prefWidth="8.0" />
-               <Button fx:id="item3ConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
+               <Button fx:id="trouserConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
             </children>
          </HBox>
       </children>
