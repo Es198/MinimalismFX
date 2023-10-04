@@ -94,10 +94,10 @@
    <Text fx:id="ordersList" layoutX="293.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item 1 - Date - Amount" />
    <TableView fx:id="stockTable" layoutX="15.0" layoutY="68.0" prefHeight="141.0" prefWidth="239.0">
      <columns>
-       <TableColumn prefWidth="54.0" text="Item" />
-       <TableColumn prefWidth="57.0" text="Size" />
-        <TableColumn minWidth="0.0" prefWidth="63.0" text="Price" />
-        <TableColumn prefWidth="64.0" text="Stock" />
+       <TableColumn fx:id="itemNameCol" prefWidth="54.0" text="Item" />
+       <TableColumn fx:id="itemSizeCol" prefWidth="57.0" text="Size" />
+        <TableColumn fx:id="itemPriceCol" minWidth="0.0" prefWidth="63.0" text="Price" />
+        <TableColumn fx:id="itemStockCol" prefWidth="64.0" text="Stock" />
      </columns>
    </TableView>
 

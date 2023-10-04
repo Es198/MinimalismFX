@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -86,9 +88,28 @@ public class AdminController {
     @FXML
     private Text totalSalesHeading;
 
-    public void initialize() {
-        populateSizeChoiceBoxes();
+    @FXML
+    private TableView<Item> stockTable;
 
+    @FXML
+    private TableColumn<Item, String> itemNameCol;
+
+    @FXML
+    private TableColumn<Item, String> itemSizeCol;
+
+    @FXML
+    private TableColumn<Item, Double> itemPriceCol;
+
+    @FXML
+    private TableColumn<Item, Double> itemStockCol;
+
+    ShoppingCart cart = new ShoppingCart();
+    ArrayList<Item> items;
+
+    public void initialize() throws FileNotFoundException {
+        items = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
+        populateSizeChoiceBoxes();
+        populateStockTable();
     }
 
     private void populateSizeChoiceBoxes() {
@@ -98,10 +119,15 @@ public class AdminController {
         trouserSizeBox.setItems(sizeOptions);
     }
 
+    private void populateStockTable(){
+        ObservableList<Item> data = FXCollections.observableArrayList();
+        data.addAll(items);
+        stockTable.setItems(data);
+    }
+
     @FXML
-    void confirmStockChange(ActionEvent event) throws FileNotFoundException {
-        ShoppingCart cart = new ShoppingCart();
-        ArrayList<Item> items = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
+    void confirmStockChange(ActionEvent event) {
+
 
         if(event.getSource() == tshirtConfirmButton) {
            updateStock("T-shirt", tshirtSizeBox.getValue(), tshirtCount, items);
