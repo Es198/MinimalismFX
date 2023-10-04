@@ -8,12 +8,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.PasswordField?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.minimalismfx.LoginPageController">
    <children>
       <VBox layoutX="112.0" layoutY="200.0" prefHeight="75.0" prefWidth="377.0">
          <children>
             <TextField fx:id="usernameField" onAction="#setUsernameField" promptText="Username" />
-            <TextField fx:id="passwordField" onAction="#setPasswordField" prefHeight="25.0" prefWidth="377.0" promptText="Password" translateY="15.0" />
+            <PasswordField fx:id="passwordField" onAction="#setPasswordField" prefHeight="25.0" prefWidth="377.0" promptText="Password" translateY="15.0" />
          </children>
       </VBox>
       <Button fx:id="loginButton" layoutX="276.0" layoutY="275.0" mnemonicParsing="false" onAction="#handleLogin" text="Login" />

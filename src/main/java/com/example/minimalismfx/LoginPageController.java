@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.PasswordField;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -15,7 +16,7 @@ import java.io.IOException;
 public class LoginPageController {
 
     @FXML
-    private TextField passwordField;
+    private PasswordField passwordField;
 
     @FXML
     private ChoiceBox<String> userTypeBox;
