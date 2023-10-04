@@ -1,9 +1,12 @@
 package com.example.minimalismfx;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
@@ -28,6 +31,9 @@ public class AdminController {
     private Button tshirtPlusButton;
 
     @FXML
+    private ChoiceBox<String> tshirtSizeBox;
+
+    @FXML
     private VBox tshirtVBox;
 
     @FXML
@@ -43,6 +49,9 @@ public class AdminController {
     private Button jumperPlusButton;
 
     @FXML
+    private ChoiceBox<String> jumperSizeBox;
+
+    @FXML
     private VBox jumperVBox;
 
     @FXML
@@ -56,6 +65,9 @@ public class AdminController {
 
     @FXML
     private Button trouserPlusButton;
+
+    @FXML
+    private ChoiceBox<String> trouserSizeBox;
 
     @FXML
     private VBox trouserVBox;
@@ -74,6 +86,13 @@ public class AdminController {
 
     @FXML
     private Text totalSalesHeading;
+
+    public void initialize() {
+        ObservableList<String> sizeOptions = FXCollections.observableArrayList("Small", "Medium", "Large");
+        tshirtSizeBox.setItems(sizeOptions);
+        jumperSizeBox.setItems(sizeOptions);
+        trouserSizeBox.setItems(sizeOptions);
+    }
 
     @FXML
     void confirmStockChange(ActionEvent event) throws FileNotFoundException {
