@@ -131,29 +131,28 @@ public class AdminController {
     @FXML
     void decrementCounter(ActionEvent event) {
         if(event.getSource() == tshirtMinusButton) {
-            int count = Integer.parseInt(tshirtCount.getText()) - 1;
-            tshirtCount.setText(String.valueOf(count));
+            updateCounter(tshirtCount, -1);
         } else if (event.getSource() == jumperMinusButton) {
-            int count = Integer.parseInt(jumperCount.getText()) - 1;
-            jumperCount.setText(String.valueOf(count));
+            updateCounter(jumperCount, -1);
         } else if (event.getSource() == trouserMinusButton) {
-            int count = Integer.parseInt(trouserCount.getText()) - 1;
-            trouserCount.setText(String.valueOf(count));
+            updateCounter(trouserCount, -1);
         }
     }
 
     @FXML
     void incrementCounter(ActionEvent event) {
         if(event.getSource() == tshirtPlusButton) {
-            int count = Integer.parseInt(tshirtCount.getText()) + 1;
-            tshirtCount.setText(String.valueOf(count));
+            updateCounter(tshirtCount, 1);
         } else if (event.getSource() == jumperPlusButton) {
-            int count = Integer.parseInt(jumperCount.getText()) + 1;
-            jumperCount.setText(String.valueOf(count));
+            updateCounter(jumperCount, 1);
         } else if (event.getSource() == trouserPlusButton) {
-            int count = Integer.parseInt(trouserCount.getText()) + 1;
-            trouserCount.setText(String.valueOf(count));
+            updateCounter(trouserCount, 1);
         }
+    }
+
+    private void updateCounter(Text countText, int sign){
+        int count = Integer.parseInt(countText.getText()) + sign;
+        countText.setText(String.valueOf(count));
     }
 
 }
