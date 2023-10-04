@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
@@ -13,7 +14,8 @@
       <TextField fx:id="cartNameTextField" alignment="CENTER" layoutX="387.0" layoutY="201.0" onAction="#userNameCartTextField" promptText="Full Name" />
       <TextField fx:id="cartCardDetailsTextField" alignment="CENTER" layoutX="387.0" layoutY="234.0" onAction="#userCardDetailsCartTextField" promptText="Card Details" />
       <TextField fx:id="cartAddressTextField" alignment="CENTER" layoutX="387.0" layoutY="271.0" onAction="#userAddressCartTextField" promptText="Address" />
-      <Text fx:id="cartTotalPriceText" layoutX="454.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text fx:id="cartTotalPriceText" layoutX="421.0" layoutY="74.0" onDragDetected="#totalPriceTextAction" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="93.0" />
       <Label fx:id="cartTotalPriceLabel" layoutX="438.0" layoutY="26.0" text="Total Price" />
+      <TextArea fx:id="piriceTextArea" layoutX="403.0" layoutY="96.0" prefHeight="26.0" prefWidth="128.0" />
    </children>
 </AnchorPane>

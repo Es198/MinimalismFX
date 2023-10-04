@@ -2,7 +2,11 @@ package com.example.minimalismfx;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuBar;
@@ -10,8 +14,10 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -78,7 +84,23 @@ public class MinimalismController implements Initializable {
     @FXML
     private Text tshirtCounter;
 
+    @FXML
+    private Text exceededJumperQuantity;
+
+    @FXML
+    private Text exceededQuantityTShirt;
+
+    @FXML
+    private Text exceededTrouserQuantity;
+
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+
     ShoppingCart cart = new ShoppingCart();
+
 //    HashMap<Item, Integer> items;
 
 
@@ -88,50 +110,81 @@ public class MinimalismController implements Initializable {
 
     @FXML
     void AddItemJumper(ActionEvent event) {
-        jumperQuantity++;
-        if(event.getSource() == addQuantityJumper) {
-            int count = Integer.parseInt(jumperCounter.getText()) + 1;
-            jumperCounter.setText(String.valueOf(count));
+        if (jumperQuantity < 10) {
+            jumperQuantity++;
+            if(event.getSource() == addQuantityJumper) {
+                int count = Integer.parseInt(jumperCounter.getText()) + 1;
+                jumperCounter.setText(String.valueOf(count));
+            }
+        }
+        else {
+            exceededJumperQuantity.setText("You have exceeded the limit of Jumpers");
+        }
+    }
+
+    @FXML
+    void DecreaseItemJumper(ActionEvent event) {
+        if (jumperQuantity > 0) {
+            jumperQuantity--;
+            if (event.getSource() == decreaseQuantityJumper) {
+                int count = Integer.parseInt(jumperCounter.getText()) - 1;
+                jumperCounter.setText(String.valueOf(count));
+            }
         }
 
     }
 
     @FXML
-    void DecreaseItemJumper(ActionEvent event) {
-        jumperQuantity--;
-    }
-
-    @FXML
     void DecreaseItemTrousers(ActionEvent event) {
-        trouserQuantity--;
-
+        if (trouserQuantity > 0) {
+            trouserQuantity--;
+            if (event.getSource() == decreaseQuantityTrousers) {
+                int count = Integer.parseInt(trouserCounter.getText()) - 1;
+                trouserCounter.setText(String.valueOf(count));
+            }
+        }
     }
 
     @FXML
     void DecreaseItemTshirt(ActionEvent event) {
-        tshirtQuantity--;
-
+        if (tshirtQuantity > 0) {
+            tshirtQuantity--;
+            if (event.getSource() == decreaseQuantityTshirt) {
+                int count = Integer.parseInt(tshirtCounter.getText()) - 1;
+                tshirtCounter.setText(String.valueOf(count));
+            }
+        }
     }
 
     @FXML
     void IncreaseItemTshirt(ActionEvent event) {
-        tshirtQuantity++;
-    if (event.getSource() == addQuantityTshirt) {
-        int count = Integer.parseInt(tshirtCounter.getText()) + 1;
-        tshirtCounter.setText(String.valueOf(count));
+        if (tshirtQuantity < 10) {
+            tshirtQuantity++;
+            if (event.getSource() == addQuantityTshirt) {
+                int count = Integer.parseInt(tshirtCounter.getText()) + 1;
+                tshirtCounter.setText(String.valueOf(count));
 
-    }
+            }
+        }
+        else {
+            exceededQuantityTShirt.setText("You have exceeded the limit of TShirts");
+        }
+
 }
 
 
     @FXML
     void IncreaseitemTrousers(ActionEvent event) {
-        trouserQuantity++;
-    if (event.getSource() == addQuantityTrousers) {
-        int count = Integer.parseInt(trouserCounter.getText()) + 1;
-        trouserCounter.setText(String.valueOf(count));
-    }
-
+        if (trouserQuantity < 10) {
+            trouserQuantity++;
+            if (event.getSource() == addQuantityTrousers) {
+                int count = Integer.parseInt(trouserCounter.getText()) + 1;
+                trouserCounter.setText(String.valueOf(count));
+            }
+        }
+        else {
+            exceededTrouserQuantity.setText("You have exceeded the limit of Trousers");
+        }
     }
 
     @FXML
@@ -230,13 +283,20 @@ public class MinimalismController implements Initializable {
     }
 
     @FXML
-    void SetUpCheckout(ActionEvent event) {
-        // Calculate the total price of the items in the cart.
-        double totalPrice = cart.calculateTotalValueOfShoppingCart();
+    void SetUpCheckout(ActionEvent event) throws IOException {
 
-        // Display the total price to the user.
-        showSummaryTshirt.setText("Total price: £" + totalPrice);
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(MinimalismController.class.getResource("cartfx.fxml"));
 
+        Parent rootParent =loader.load();
+        Scene rootScene = new Scene(rootParent);
+        CartController controller=loader.getController();
+        controller.setCart(cart);
+        controller.initialize(null, null);
+
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setScene(rootScene);
+        stage.show();
     }
     @FXML
     void countJumperSelection(MouseEvent event) {
@@ -286,5 +346,7 @@ public class MinimalismController implements Initializable {
         }
         return null; // Handle the case where the selected item is not found
     }
+
+
 
 }
