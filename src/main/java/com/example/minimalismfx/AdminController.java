@@ -7,6 +7,9 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+
 public class AdminController {
 
     @FXML
@@ -73,10 +76,15 @@ public class AdminController {
     private Text totalSalesHeading;
 
     @FXML
-    void confirmStockChange(ActionEvent event) {
+    void confirmStockChange(ActionEvent event) throws FileNotFoundException {
+        ShoppingCart cart = new ShoppingCart();
+        ArrayList<Item> items = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
+
         if(event.getSource() == item1ConfirmButton) {
             int count = Integer.parseInt(item1Count.getText());
             item1Count.setText("0");
+
+
 
 
         } else if (event.getSource() == item2ConfirmButton) {

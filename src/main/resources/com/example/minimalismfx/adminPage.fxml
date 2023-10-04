@@ -16,14 +16,15 @@
             </VBox>
             <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="101.0">
                 <children>
-                    <Button fx:id="item1MinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-25.0" />
-               <Text fx:id="item1Count" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-20.0">
+                    <Button fx:id="item1MinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-15.0" />
+               <Text fx:id="item1Count" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-10.0">
                   <font>
                      <Font size="20.0" />
                   </font>
                </Text>
-                    <Button fx:id="item1PlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-15.0" />
-               <Button fx:id="item1ConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" />
+                    <Button fx:id="item1PlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
+               <ChoiceBox prefHeight="25.0" prefWidth="8.0" />
+               <Button fx:id="item1ConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
                 </children>
             </HBox>
         </children>
@@ -37,14 +38,15 @@
          </VBox>
          <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="101.0">
             <children>
-               <Button fx:id="item2MinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-25.0" />
-               <Text fx:id="item2Count" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-20.0">
+               <Button fx:id="item2MinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-15.0" />
+               <Text fx:id="item2Count" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-10.0">
                   <font>
                      <Font size="20.0" />
                   </font>
                </Text>
-               <Button fx:id="item2PlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-15.0" />
-               <Button fx:id="item2ConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" />
+               <Button fx:id="item2PlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
+               <ChoiceBox prefHeight="25.0" prefWidth="8.0" />
+               <Button fx:id="item2ConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
             </children>
          </HBox>
       </children>
@@ -58,14 +60,15 @@
          </VBox>
          <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="101.0">
             <children>
-               <Button fx:id="item3MinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-25.0" />
-               <Text fx:id="item3Count" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-20.0">
+               <Button fx:id="item3MinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-15.0" />
+               <Text fx:id="item3Count" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-10.0">
                   <font>
                      <Font size="20.0" />
                   </font>
                </Text>
-               <Button fx:id="item3PlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-15.0" />
-               <Button fx:id="item3ConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" />
+               <Button fx:id="item3PlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
+               <ChoiceBox prefHeight="25.0" prefWidth="8.0" />
+               <Button fx:id="item3ConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
             </children>
          </HBox>
       </children>
