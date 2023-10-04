@@ -101,67 +101,31 @@ public class AdminController {
         ArrayList<Item> items = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
 
         if(event.getSource() == tshirtConfirmButton) {
-            tshirtCount.setFill(Color.BLACK);
-            int quantity = Integer.parseInt(tshirtCount.getText());
-            String size = tshirtSizeBox.getValue();
-
-            for(Item item: items){
-                if("T-shirt".equals(item.getItemName()) && size.equals(item.getItemSize())) {
-                    int availableStock = item.getItemStock();
-                    int newStock = availableStock + quantity;
-
-                    if((newStock) < 0) {
-                        tshirtCount.setFill(Color.RED);
-                    } else {
-                        item.setItemStock(newStock);
-                        tshirtCount.setText("0");
-                    }
-                    break;
-                }
-            }
-
-
+           updateStock("T-shirt", tshirtSizeBox.getValue(), tshirtCount, items);
         } else if (event.getSource() == jumperConfirmButton) {
-            jumperCount.setFill(Color.BLACK);
-            int quantity = Integer.parseInt(jumperCount.getText());
-            String size = jumperSizeBox.getValue();
-
-            for(Item item: items){
-                if("Jumper".equals(item.getItemName()) && size.equals(item.getItemSize())) {
-                    int availableStock = item.getItemStock();
-                    int newStock = availableStock + quantity;
-
-                    if((newStock) < 0) {
-                        jumperCount.setFill(Color.RED);
-                    } else {
-                        item.setItemStock(newStock);
-                        jumperCount.setText("0");
-                    }
-                    break;
-                }
-            }
-
+            updateStock("Jumper", tshirtSizeBox.getValue(), tshirtCount, items);
         } else if (event.getSource() == trouserConfirmButton) {
-            trouserCount.setFill(Color.BLACK);
-            int quantity = Integer.parseInt(trouserCount.getText());
-            String size = trouserSizeBox.getValue();
+            updateStock("Trouser", tshirtSizeBox.getValue(), tshirtCount, items);
+        }
+    }
 
-            for(Item item: items){
-                if("Trouser".equals(item.getItemName()) && size.equals(item.getItemSize())) {
-                    int availableStock = item.getItemStock();
-                    int newStock = availableStock + quantity;
+    private void updateStock(String itemName, String size, Text countText, ArrayList<Item> items){
+        for(Item item: items){
+            if(itemName.equals(item.getItemName()) && size.equals(item.getItemSize())) {
+                int availableStock = item.getItemStock();
+                int quantity = Integer.parseInt(trouserCount.getText());
+                int newStock = availableStock + quantity;
 
-                    if((newStock) < 0) {
-                        trouserCount.setFill(Color.RED);
-                    } else {
-                        item.setItemStock(newStock);
-                        trouserCount.setText("0");
-                    }
-                    break;
+                if((newStock) < 0) {
+                    countText.setFill(Color.RED);
+                } else {
+                    item.setItemStock(newStock);
+                    countText.setText("0");
+                    countText.setFill(Color.BLACK);
                 }
+                break;
             }
         }
-
     }
 
     @FXML
