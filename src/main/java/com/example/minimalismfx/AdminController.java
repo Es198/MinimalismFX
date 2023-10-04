@@ -132,14 +132,12 @@ public class AdminController {
 
     @FXML
     void confirmStockChange(ActionEvent event) {
-
-
         if(event.getSource() == tshirtConfirmButton) {
            updateStock("T-shirt", tshirtSizeBox.getValue(), tshirtCount, items);
         } else if (event.getSource() == jumperConfirmButton) {
             updateStock("Jumper", jumperSizeBox.getValue(), jumperCount, items);
         } else if (event.getSource() == trouserConfirmButton) {
-            updateStock("Trouser", trouserSizeBox.getValue(), trouserCount, items);
+            updateStock("Trousers", trouserSizeBox.getValue(), trouserCount, items);
         }
     }
 
