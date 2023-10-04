@@ -87,6 +87,11 @@ public class AdminController {
     private Text totalSalesHeading;
 
     public void initialize() {
+        populateSizeChoiceBoxes();
+
+    }
+
+    private void populateSizeChoiceBoxes() {
         ObservableList<String> sizeOptions = FXCollections.observableArrayList("Small", "Medium", "Large");
         tshirtSizeBox.setItems(sizeOptions);
         jumperSizeBox.setItems(sizeOptions);

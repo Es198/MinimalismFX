@@ -96,8 +96,8 @@
      <columns>
        <TableColumn prefWidth="54.0" text="Item" />
        <TableColumn prefWidth="57.0" text="Size" />
-         <TableColumn minWidth="0.0" prefWidth="63.0" text="Price" />
-         <TableColumn prefWidth="64.0" text="Stock" />
+        <TableColumn minWidth="0.0" prefWidth="63.0" text="Price" />
+        <TableColumn prefWidth="64.0" text="Stock" />
      </columns>
    </TableView>
 
