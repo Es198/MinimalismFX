@@ -10,7 +10,7 @@ import java.io.IOException;
 public class MinimalismApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(MinimalismApplication.class.getResource("cartfx.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(MinimalismApplication.class.getResource("LoginPageV2.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
