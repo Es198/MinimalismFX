@@ -19,7 +19,10 @@ import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
+import com.example.minimalismfx.CartController;
+
 
 public class MinimalismController implements Initializable {
 
@@ -198,23 +201,13 @@ public class MinimalismController implements Initializable {
             if (selectedJumper != null) {
                 cart.addItemToCart(selectedJumper, jumperQuantity);
 
-                // Append the item details to the showSummaryTshirt TextArea
-                StringBuilder summaryText = new StringBuilder(showSummaryTshirt.getText());
+                // Create a string for the selected item and add it to the list
+                String itemDetails = "Item: " + selectedJumper.getItemName() +
+                        "\nSize: " + selectedJumper.getItemSize() +
+                        "\nPrice: " + selectedJumper.getItemPrice() +
+                        "\nQuantity: " + jumperQuantity + "\n\n";
 
-                // Append a separator if there is existing text
-                if (summaryText.length() > 0) {
-                    summaryText.append("\n\n");
-                }
-
-                // Append the details of the added item
-                String itemDetails = "Item: " + selectedJumper.getItemName() + "\nSize: " + selectedJumper.getItemSize() + "\nPrice: " + selectedJumper.getItemPrice() + "\nQuantity: " + jumperQuantity + "\n";
-                summaryText.append(itemDetails);
-
-                // Set the updated summaryText to the TextArea
-                showSummaryTshirt.setText(summaryText.toString());
-            } else {
-                // Handle the case where the selected jumper item was not found
-                showSummaryTshirt.setText("Selected jumper not found.");
+                cart.addSelectedItem(itemDetails);
             }
         }
     }
@@ -229,56 +222,38 @@ public class MinimalismController implements Initializable {
             if (selectedTrouser != null) {
                 cart.addItemToCart(selectedTrouser, trouserQuantity);
 
-                // Append the item details to the showSummaryTshirt TextArea
-                StringBuilder summaryText = new StringBuilder(showSummaryTshirt.getText());
+                // Create a string for the selected item and add it to the list
+                String itemDetails = "Item: " + selectedTrouser.getItemName() +
+                        "\nSize: " + selectedTrouser.getItemSize() +
+                        "\nPrice: " + selectedTrouser.getItemPrice() +
+                        "\nQuantity: " + trouserQuantity + "\n\n";
 
-                // Append a separator if there is existing text
-                if (summaryText.length() > 0) {
-                    summaryText.append("\n\n");
-                }
-
-                // Append the details of the added item
-                String itemDetails = "Item: " + selectedTrouser.getItemName() + "\nSize: " + selectedTrouser.getItemSize() + "\nPrice: " + selectedTrouser.getItemPrice() + "\nQuantity: " + trouserQuantity + "\n";
-                summaryText.append(itemDetails);
-
-                // Set the updated summaryText to the TextArea
-                showSummaryTshirt.setText(summaryText.toString());
-            } else {
-                // Handle the case where the selected trouser item was not found
-                showSummaryTshirt.setText("Selected Trouser not found.");
+                cart.addSelectedItem(itemDetails);
             }
         }
 
     }
 
     @FXML
-    void SetUpAddToCartTshirt(ActionEvent event) throws FileNotFoundException {
-        String trouserSize = sizeChoiceTshirt.getSelectionModel().getSelectedItem();
-        if (trouserSize != null) {
+    void SetUpAddToCartTshirt(ActionEvent event) throws IOException {
+        String tshirtSize = sizeChoiceTshirt.getSelectionModel().getSelectedItem();
+        if (tshirtSize != null) {
             Item selectedTShirt= getSelectedItem("T-shirt"); // Get the selected tshirt item
 
             // Check if a valid tshirt item was found
             if (selectedTShirt != null) {
                 cart.addItemToCart(selectedTShirt, tshirtQuantity);
 
-                // Append the item details to the showSummaryTshirt TextArea
-                StringBuilder summaryText = new StringBuilder(showSummaryTshirt.getText());
 
-                // Append a separator if there is existing text
-                if (summaryText.length() > 0) {
-                    summaryText.append("\n\n");
-                }
+                // Create a string for the selected item and add it to the list
+                String itemDetails = "Item: " + selectedTShirt.getItemName() +
+                        "\nSize: " + selectedTShirt.getItemSize() +
+                        "\nPrice: " + selectedTShirt.getItemPrice() +
+                        "\nQuantity: " + tshirtQuantity + "\n\n";
 
-                // Append the details of the added item
-                String itemDetails = "Item: " + selectedTShirt.getItemName() + "\nSize: " + selectedTShirt.getItemSize() + "\nPrice: " + selectedTShirt.getItemPrice() + "\nQuantity: " + tshirtQuantity + "\n";
-                summaryText.append(itemDetails);
-
-                // Set the updated summaryText to the TextArea
-                showSummaryTshirt.setText(summaryText.toString());
-            } else {
-                // Handle the case where the selected tshirt item was not found
-                showSummaryTshirt.setText("Selected TShirt not found.");
+                cart.addSelectedItem(itemDetails);
             }
+
         }
     }
 

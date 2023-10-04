@@ -7,6 +7,7 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -24,7 +25,10 @@
       <VBox layoutX="61.0" layoutY="147.0" prefHeight="235.0" prefWidth="263.0">
          <children>
             <VBox />
-            <ImageView fx:id="ImageTshirt" fitHeight="158.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ImageTshirt" fitHeight="175.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/tshirt.jpeg" />
+               </image></ImageView>
             <HBox alignment="BOTTOM_CENTER" prefHeight="75.0" prefWidth="244.0">
                <children>
                   <Button fx:id="AddCartTshirt" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#SetUpAddToCartTshirt" text="Add to Cart" />
@@ -57,7 +61,10 @@
       <VBox layoutX="401.0" layoutY="147.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="219.0">
          <children>
             <VBox />
-            <ImageView fx:id="ImageJumper" fitHeight="158.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ImageJumper" fitHeight="158.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/images.jpeg" />
+               </image></ImageView>
             <HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="192.0">
                <children>
                   <Button fx:id="AddCartJumper" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#SetUpAddToCartJumper" text="Add to Cart" />
@@ -67,10 +74,13 @@
             </HBox>
          </children>
       </VBox>
-      <VBox layoutX="785.0" layoutY="154.0" minWidth="-Infinity" prefHeight="235.0" prefWidth="243.0">
+      <VBox layoutX="789.0" layoutY="147.0" minWidth="-Infinity" prefHeight="235.0" prefWidth="243.0">
          <children>
             <VBox />
-            <ImageView fx:id="ImageTrousers" fitHeight="158.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="ImageTrousers" fitHeight="158.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../Downloads/trouser.jpeg" />
+               </image></ImageView>
             <HBox alignment="BOTTOM_CENTER" prefHeight="75.0" prefWidth="244.0">
                <children>
                   <Button fx:id="AddCartTrousers" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#SetUpAddToCartTrousers" text="Add to Cart" />

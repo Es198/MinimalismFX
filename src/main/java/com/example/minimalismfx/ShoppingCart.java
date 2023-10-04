@@ -12,6 +12,7 @@ public class ShoppingCart {
 
     ArrayList<Item> items = new ArrayList<>();
     HashMap<Item, Integer> cartItems = new HashMap<>();
+    ArrayList<String> selectedItems = new ArrayList<String>();
 
 
     public void readingCSVFile(String filePath) throws FileNotFoundException {
@@ -60,6 +61,14 @@ public class ShoppingCart {
             totalPrice += entry.getKey().getItemPrice() * entry.getValue();
         }
         return totalPrice;
+    }
+
+    public void addSelectedItem(String itemDetails) {
+        selectedItems.add(String.valueOf(itemDetails));
+    }
+
+    public ArrayList<String> getSelectedItems() {
+        return selectedItems;
     }
 
 
