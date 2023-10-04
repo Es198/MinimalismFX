@@ -29,7 +29,7 @@ public class LoginPageController {
         userTypeBox.setItems(userTypes);
     }
 
-    private static final String CSV_FILE_PATH = "userFile.csv";
+    private static final String CSV_FILE_PATH = "src/main/resources/com/example/minimalismfx/userFile.csv";
 
     @FXML
     void setPasswordField(ActionEvent event) {
