@@ -61,24 +61,12 @@ public class CartController {
     @FXML
     void setUpCheckoutHandler(ActionEvent event)throws IOException {
 
-//        FXMLLoader loader=new FXMLLoader();
-//        loader.setLocation(CartController.class.getResource("checkoutFX.fxml"));
-//        Parent rootParent =loader.load();
-//        Scene rootScene = new Scene(rootParent);
-        //CartController controller=loader.getController();
-        //controller.setCart(cart);
-        //controller.initialize(null, null);
-
         root = FXMLLoader.load(CartController.class.getResource("checkoutFX.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
 
-
-//        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-//        stage.setScene(rootScene);
-//        stage.show();
     }
 
 
