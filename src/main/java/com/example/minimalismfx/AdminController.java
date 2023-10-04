@@ -103,13 +103,18 @@ public class AdminController {
         if(event.getSource() == tshirtConfirmButton) {
            updateStock("T-shirt", tshirtSizeBox.getValue(), tshirtCount, items);
         } else if (event.getSource() == jumperConfirmButton) {
-            updateStock("Jumper", tshirtSizeBox.getValue(), tshirtCount, items);
+            updateStock("Jumper", jumperSizeBox.getValue(), jumperCount, items);
         } else if (event.getSource() == trouserConfirmButton) {
-            updateStock("Trouser", tshirtSizeBox.getValue(), tshirtCount, items);
+            updateStock("Trouser", trouserSizeBox.getValue(), trouserCount, items);
         }
     }
 
     private void updateStock(String itemName, String size, Text countText, ArrayList<Item> items){
+        if (size == null){
+            countText.setFill(Color.RED);
+            return;
+        }
+
         for(Item item: items){
             if(itemName.equals(item.getItemName()) && size.equals(item.getItemSize())) {
                 int availableStock = item.getItemStock();
@@ -123,7 +128,7 @@ public class AdminController {
                     countText.setText("0");
                     countText.setFill(Color.BLACK);
                 }
-                break;
+                return;
             }
         }
     }
