@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -120,6 +121,10 @@ public class AdminController {
     }
 
     private void populateStockTable(){
+        itemNameCol.setCellValueFactory(new PropertyValueFactory<>("itemName"));
+        itemSizeCol.setCellValueFactory(new PropertyValueFactory<>("itemSize"));
+        itemPriceCol.setCellValueFactory(new PropertyValueFactory<>("itemPrice"));
+        itemStockCol.setCellValueFactory(new PropertyValueFactory<>("itemStock"));
         ObservableList<Item> data = FXCollections.observableArrayList();
         data.addAll(items);
         stockTable.setItems(data);
