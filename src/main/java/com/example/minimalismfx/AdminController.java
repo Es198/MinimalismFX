@@ -5,6 +5,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TableColumn;
@@ -13,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -81,6 +86,8 @@ public class AdminController {
 
     @FXML
     private Text ordersList;
+    @FXML
+    private Button logoutButton;
 
 
     @FXML
@@ -240,6 +247,18 @@ public class AdminController {
         }
 
         fileWriter.close();
+    }
+
+    @FXML
+    void setUpLogoutButton(ActionEvent event) throws IOException {
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(AdminController.class.getResource("LoginPageV2.fxml"));
+        Parent rootParent =loader.load();
+        Scene rootScene = new Scene(rootParent);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(rootScene);
+        stage.show();
+
     }
 
 }
