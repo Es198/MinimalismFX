@@ -68,7 +68,7 @@ public class LoginPageController {
                 return;
             }
 
-            Parent root = loader.load();
+           Parent root = loader.load();
             Stage stage = new Stage();
             stage.setTitle(title);
             stage.setScene(new Scene(root));
