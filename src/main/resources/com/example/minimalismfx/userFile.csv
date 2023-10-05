@@ -1,10 +1,15 @@
-John Doe, password123, shopper, 30, Male
-Alice Smith, secretPass, shopper, 25, Female
-Admin1, adminPass123, staff, 35, Male
-Sarah Johnson, pass123, shopper, 28, Female
-Michael Davis, mySecretPass, shopper, 33, Male
-Admin2, adminPass456, staff, 40, Female
-Emily Brown, password321, shopper, 22, Female
-StaffUser1, staffPass1, staff, 37, Male
-ShopperUser1, shopperPass1, shopper, 29, Female
-ShopperUser2, shopperPass2, shopper, 31, Male
+John Doe, password123, Shopper, 30, Male
+Alice Smith, secretPass, Shopper, 25, Female
+Admin1, adminPass123, Staff, 35, Male
+Sarah Johnson, pass123, Shopper, 28, Female
+Michael Davis, mySecretPass, Shopper, 33, Male
+Admin2, adminPass456, Staff, 40, Female
+Emily Brown, password321, Shopper, 22, Female
+StaffUser1, staffPass1, Staff, 37, Male
+ShopperUser1, shopperPass1, Shopper, 29, Female
+ShopperUser2, shopperPass2, Shopper, 31, Male
+Kadri Idris, kadri123, Staff, 26, Male
+Rais Hussain, rais123, Staff, 22, Male
+Samuel Badru, samuel123, Staff, 26, Male
+Divin Joseph, Divin123, Staff, 28, Male
+Esra Salem, esra123, Staff, 23, Female
