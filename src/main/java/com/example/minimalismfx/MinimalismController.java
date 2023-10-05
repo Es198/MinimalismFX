@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 import com.example.minimalismfx.CartController;
 
 
-public class MinimalismController implements Initializable {
+public class MinimalismController {
 
 
     @FXML
@@ -144,9 +144,25 @@ public class MinimalismController implements Initializable {
         updateCounter(trouserCounter,1);
     }
 
+    public void initialize() throws FileNotFoundException {
+        itemStockList = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
+
+        sizeChoiceTshirt.getItems().add("Small");
+        sizeChoiceTshirt.getItems().add("Medium");
+        sizeChoiceTshirt.getItems().add("Large");
+
+        sizeChoiceJumper.getItems().add("Small");
+        sizeChoiceJumper.getItems().add("Medium");
+        sizeChoiceJumper.getItems().add("Large");
+
+        sizeChoiceTrouser.getItems().add("Small");
+        sizeChoiceTrouser.getItems().add("Medium");
+        sizeChoiceTrouser.getItems().add("Large");
+
+    }
     @FXML
     void SetUpAddToCartJumper(ActionEvent event) throws FileNotFoundException {
-
+        confirmAvailability(event);
         String jumperSize = sizeChoiceJumper.getSelectionModel().getSelectedItem();
         if (jumperSize != null) {
             Item selectedJumper = getSelectedItem("Jumper"); // Get the selected jumper item
@@ -168,6 +184,7 @@ public class MinimalismController implements Initializable {
 
     @FXML
     public void SetUpAddToCartTrousers(ActionEvent event) throws FileNotFoundException {
+        confirmAvailability(event);
         String trouserSize = sizeChoiceTrouser.getSelectionModel().getSelectedItem();
         if (trouserSize != null) {
             Item selectedTrouser= getSelectedItem("Trousers"); // Get the selected trouser item
@@ -190,6 +207,7 @@ public class MinimalismController implements Initializable {
 
     @FXML
     void SetUpAddToCartTshirt(ActionEvent event) throws IOException {
+        confirmAvailability(event);
         String tshirtSize = sizeChoiceTshirt.getSelectionModel().getSelectedItem();
         if (tshirtSize != null) {
             Item selectedTShirt= getSelectedItem("T-shirt"); // Get the selected tshirt item
@@ -214,7 +232,6 @@ public class MinimalismController implements Initializable {
 
     @FXML
     void SetUpCheckout(ActionEvent event) throws IOException {
-
         FXMLLoader loader=new FXMLLoader();
         loader.setLocation(MinimalismController.class.getResource("cartfx.fxml"));
 
@@ -239,23 +256,10 @@ public class MinimalismController implements Initializable {
     void countTrouserSelection(MouseEvent event) {
     }
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        sizeChoiceTshirt.getItems().add("Small");
-        sizeChoiceTshirt.getItems().add("Medium");
-        sizeChoiceTshirt.getItems().add("Large");
 
-        sizeChoiceJumper.getItems().add("Small");
-        sizeChoiceJumper.getItems().add("Medium");
-        sizeChoiceJumper.getItems().add("Large");
 
-        sizeChoiceTrouser.getItems().add("Small");
-        sizeChoiceTrouser.getItems().add("Medium");
-        sizeChoiceTrouser.getItems().add("Large");
+    private Item getSelectedItem(String itemType) {
 
-    }
-
-    private Item getSelectedItem(String itemType) throws FileNotFoundException {
-        cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
         String selectedSize;
 
         if (itemType.equals("Jumper")) {
