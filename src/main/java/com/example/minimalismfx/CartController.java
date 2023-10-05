@@ -14,11 +14,15 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class CartController {
     @FXML
@@ -91,6 +95,17 @@ public class CartController {
 
     @FXML
     void setUpCheckoutHandler(ActionEvent event) throws IOException {
+        // Update the CSV file with the new stock levels
+        for (Item item : cart.items) {
+            try {
+                updateStockCSV(item.getItemName(), item.getItemSize(), item.getItemStock());
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        // Clear the shopping cart
+//        cart.clearItems();
+
         // Check if the text fields are populated
         String fullName = cartNameTextField.getText();
         String cardDetails = cartCardDetailsTextField.getText();
@@ -111,9 +126,6 @@ public class CartController {
             confirmationOfOrderText.setText("Please fill in all fields before checkout.");
         }
 
-//        String newItemName = itemClass.getItemName();
-//        String newItemSize = itemClass.getItemSize() ;
-//        int newItemStock = itemClass.getItemStock();
     }
 
     @FXML
@@ -133,9 +145,6 @@ public class CartController {
         stage.show();
 
     }
-
-
-
 
     @FXML
     void userAddressCartTextField(ActionEvent event) {
@@ -181,6 +190,53 @@ public class CartController {
 
         summaryOrderText.setText(String.valueOf(orderDetails));
 
+    }
+
+    public void updateStockCSV(String itemName, String itemSize, int itemStock) throws IOException {
+        String itemTextPath = "src/main/resources/com/example/minimalismfx/itemFile.csv";
+        File itemFile = new File(itemTextPath);
+
+        // Create a temporary list to store the updated CSV data
+        ArrayList<String> updatedCSVStock = new ArrayList<>();
+
+        // Read the existing CSV data
+        try (Scanner scanner = new Scanner(itemFile)) {
+            while (scanner.hasNextLine()) {
+                String line = scanner.nextLine();
+                String[] fields = line.split(",");
+
+                // Checking that name matches the specified item object and size
+                if (fields.length >= 4 && fields[0].equals(itemName) && fields[1].equals(itemSize)) {
+                    fields[3] = Integer.toString(itemStock);
+                }
+
+                // Add the updated or unchanged line to the temporary list
+                updatedCSVStock.add(String.join(",", fields));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return; // Exit early if the file doesn't exist
+        }
+
+        // Create a FileWriter to write the updated CSV data to a temporary file
+        File tempFile = new File("src/main/resources/com/example/minimalismfx/updateCSVStock.csv");
+        try (FileWriter fileWriter = new FileWriter(tempFile)) {
+            for (String line : updatedCSVStock) {
+                fileWriter.write(line + "\n");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return; // Exit early if there's an issue writing the file
+        }
+
+        // Replace the original file with the temporary file
+//        if (originalFile.delete()) {
+//            if (!tempFile.renameTo(originalFile)) {
+//                throw new IOException("Failed to rename the temporary file to the original file");
+//            }
+//        } else {
+//            throw new IOException("Failed to delete the original file");
+//        }
     }
 
 
