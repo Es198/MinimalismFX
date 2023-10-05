@@ -15,7 +15,10 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class AdminController {
 
@@ -108,6 +111,8 @@ public class AdminController {
     Admin admin;
     ArrayList<Item> items;
 
+    Item itemClass;
+
 
     public void initialize() throws FileNotFoundException {
         items = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
@@ -144,7 +149,7 @@ public class AdminController {
     }
 
     @FXML
-    void confirmStockChange(ActionEvent event) {
+    void confirmStockChange(ActionEvent event) throws IOException {
         if(event.getSource() == tshirtConfirmButton) {
            updateStock("T-shirt", tshirtSizeBox.getValue(), tshirtCount, items);
         } else if (event.getSource() == jumperConfirmButton) {
@@ -154,7 +159,7 @@ public class AdminController {
         }
     }
 
-    private void updateStock(String itemName, String size, Text countText, ArrayList<Item> items){
+    private void updateStock(String itemName, String size, Text countText, ArrayList<Item> items) throws IOException {
         if (size == null){
             countText.setFill(Color.RED);
             return;
@@ -173,6 +178,7 @@ public class AdminController {
                     countText.setText("0");
                     countText.setFill(Color.BLACK);
                     stockTable.refresh();
+//                    updateStockCSV(itemName, size, newStock);
                 }
                 return;
             }
@@ -204,6 +210,36 @@ public class AdminController {
     private void updateCounter(Text countText, int sign){
         int count = Integer.parseInt(countText.getText()) + sign;
         countText.setText(String.valueOf(count));
+    }
+
+    public void updateStockCSV(String itemName, String itemSize, int itemStock) throws IOException {
+        String itemText = "src/main/resources/com/example/minimalismfx/itemFile.csv";
+        Scanner scanner = new Scanner(itemText);
+        ArrayList<String> updatedCSVStock = new ArrayList<>();
+
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            String[] fields = line.split(",");
+
+            //checking that name matches to specified item object
+            if (fields[0].equals(itemName) && fields[1].equals(itemSize)) {
+                fields[3] = Integer.toString(itemStock);
+            }
+
+            //Adding the updated stock to CSV stock arraylist
+            updatedCSVStock.add(String.join(",", fields));
+        }
+
+        scanner.close();
+
+        // Create a new FileWriter to write the updated CSV data to the file
+        FileWriter fileWriter = new FileWriter(itemText);
+
+        for (String line : updatedCSVStock) {
+            fileWriter.write(line + "\n");
+        }
+
+        fileWriter.close();
     }
 
 }
