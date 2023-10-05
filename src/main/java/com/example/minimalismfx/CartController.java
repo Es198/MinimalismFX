@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -53,10 +54,13 @@ public class CartController {
     @FXML
     private Button backButton;
 
-
-
+    String orderDetails;
 
     ShoppingCart cart;
+
+    Admin admin;
+
+    double totalPrice;
 
     public CartController() {
 
@@ -92,6 +96,10 @@ public class CartController {
         String address = cartAddressTextField.getText();
 
         if (!fullName.isEmpty() && !cardDetails.isEmpty() && !address.isEmpty()) {
+            // Create Order
+            admin.recordOrder(fullName, orderDetails);
+            // Log price of order
+            admin.addToTotalSales();
             // Perform the checkout action
             root = FXMLLoader.load(CartController.class.getResource("checkoutFX.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -145,7 +153,7 @@ public class CartController {
     }
     @FXML
     void initialize(URL url, ResourceBundle resourceBundle) {
-        double totalPrice = cart.calculateTotalValueOfShoppingCart();
+        totalPrice = cart.calculateTotalValueOfShoppingCart();
         cartTotalPriceText.setText("£" + totalPrice);
 
         // Get the selected items
@@ -164,10 +172,9 @@ public class CartController {
             orderDetailsBuilder.setLength(orderDetailsBuilder.length() - 1);
         }
 
-        String orderDetails = orderDetailsBuilder.toString();
+        orderDetails = orderDetailsBuilder.toString();
 
         summaryOrderText.setText(String.valueOf(orderDetails));
-        System.out.println(orderDetails);
 
     }
 
