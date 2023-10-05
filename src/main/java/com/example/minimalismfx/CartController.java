@@ -6,6 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -37,6 +40,9 @@ public class CartController {
 
     @FXML
     private Text confirmationOfOrderText;
+    private Parent root;
+    private Scene scene;
+    private Stage stage;
 
     @FXML
     private Text summaryOrderText;
@@ -87,7 +93,10 @@ public class CartController {
 
         if (!fullName.isEmpty() && !cardDetails.isEmpty() && !address.isEmpty()) {
             // Perform the checkout action
-            confirmationOfOrderText.setText("Checkout successful!");
+            root = FXMLLoader.load(CartController.class.getResource("checkoutFX.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
             // You can add your checkout logic here
         } else {
             confirmationOfOrderText.setText("Please fill in all fields before checkout.");
@@ -111,6 +120,9 @@ public class CartController {
         stage.show();
 
     }
+
+
+
 
     @FXML
     void userAddressCartTextField(ActionEvent event) {
