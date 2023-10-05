@@ -6,10 +6,13 @@ import java.util.ArrayList;
 public class Admin {
 
     ArrayList<Order> allOrders = new ArrayList<>();
+    double sum = 0;
+    CartController cart;
+
 
     // To be called when items are purchased
-    void recordOrder(String userName, Item item, int quantity) {
-        Order order = new Order(userName, item, quantity, LocalDateTime.now());
+    void recordOrder(String userName, String item) {
+        Order order = new Order(userName, item, LocalDateTime.now());
         allOrders.add(order);
     }
 
@@ -24,14 +27,8 @@ public class Admin {
         return result.toString();
     }
 
-    int calculateTotalSales(){
-        int sum = 0;
-
-        for (Order order: allOrders) {
-            sum += order.getItem().getItemPrice() * order.getQuantity();
-        }
-
-        return sum;
+    void addToTotalSales(){
+        sum += cart.totalPrice;
     }
 
 

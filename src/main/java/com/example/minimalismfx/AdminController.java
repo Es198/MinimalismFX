@@ -1,5 +1,6 @@
 package com.example.minimalismfx;
 
+import javafx.beans.value.ObservableStringValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -106,7 +107,8 @@ public class AdminController {
     @FXML
     private TableColumn<Item, Double> itemStockCol;
 
-    ShoppingCart cart = new ShoppingCart();
+    ShoppingCart cart;
+    Admin admin;
     ArrayList<Item> items;
 
     Item itemClass;
@@ -116,7 +118,18 @@ public class AdminController {
         items = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
         populateSizeChoiceBoxes();
         populateStockTable();
+        populateOrdersList();
+        populateTotalSales();
     }
+
+    private void populateTotalSales() {
+        totalSalesAmount.setText("£ " + admin.sum);
+    }
+
+    private void populateOrdersList() {
+        ordersList.setText(admin.displayAllOrders());
+    }
+
 
     private void populateSizeChoiceBoxes() {
         ObservableList<String> sizeOptions = FXCollections.observableArrayList("Small", "Medium", "Large");
