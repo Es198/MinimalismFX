@@ -103,7 +103,8 @@ public class AdminController {
     @FXML
     private TableColumn<Item, Double> itemStockCol;
 
-    ShoppingCart cart = new ShoppingCart();
+    ShoppingCart cart;
+    Admin admin;
     ArrayList<Item> items;
 
 
@@ -111,7 +112,13 @@ public class AdminController {
         items = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
         populateSizeChoiceBoxes();
         populateStockTable();
+        populateOrdersList();
     }
+
+    private void populateOrdersList() {
+        ordersList.setText(admin.displayAllOrders());
+    }
+
 
     private void populateSizeChoiceBoxes() {
         ObservableList<String> sizeOptions = FXCollections.observableArrayList("Small", "Medium", "Large");
