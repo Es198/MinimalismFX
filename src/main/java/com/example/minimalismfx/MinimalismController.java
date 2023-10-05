@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -25,7 +26,7 @@ import java.util.ResourceBundle;
 import com.example.minimalismfx.CartController;
 
 
-public class MinimalismController implements Initializable {
+public class MinimalismController {
 
 
     @FXML
@@ -104,6 +105,7 @@ public class MinimalismController implements Initializable {
 
 
     ShoppingCart cart = new ShoppingCart();
+    ArrayList<Item> itemStockList;
 
 //    HashMap<Item, Integer> items;
 
@@ -114,99 +116,66 @@ public class MinimalismController implements Initializable {
 
     @FXML
     void AddItemJumper(ActionEvent event) {
-        if (jumperQuantity < 10) {
-            jumperQuantity++;
-            if(event.getSource() == addQuantityJumper) {
-                int count = Integer.parseInt(jumperCounter.getText()) + 1;
-                jumperCounter.setText(String.valueOf(count));
-            }
-        }
-        else {
-            exceededJumperQuantity.setText("You have exceeded the limit of Jumpers");
-        }
+        updateCounter("Jumper", jumperCounter,1);
     }
 
     @FXML
     void DecreaseItemJumper(ActionEvent event) {
-        if (jumperQuantity > 0) {
-            jumperQuantity--;
-            if (event.getSource() == decreaseQuantityJumper) {
-                int count = Integer.parseInt(jumperCounter.getText()) - 1;
-                jumperCounter.setText(String.valueOf(count));
-            }
-        }
-
+        updateCounter("Jumper", jumperCounter, -1);
     }
 
     @FXML
     void DecreaseItemTrousers(ActionEvent event) {
-        if (trouserQuantity > 0) {
-            trouserQuantity--;
-            if (event.getSource() == decreaseQuantityTrousers) {
-                int count = Integer.parseInt(trouserCounter.getText()) - 1;
-                trouserCounter.setText(String.valueOf(count));
-            }
-        }
+        updateCounter("Trousers", trouserCounter, -1);
     }
 
     @FXML
     void DecreaseItemTshirt(ActionEvent event) {
-        if (tshirtQuantity > 0) {
-            tshirtQuantity--;
-            if (event.getSource() == decreaseQuantityTshirt) {
-                int count = Integer.parseInt(tshirtCounter.getText()) - 1;
-                tshirtCounter.setText(String.valueOf(count));
-            }
-        }
+        updateCounter("T-shirt", tshirtCounter, -1);
     }
 
     @FXML
     void IncreaseItemTshirt(ActionEvent event) {
-        if (tshirtQuantity < 10) {
-            tshirtQuantity++;
-            if (event.getSource() == addQuantityTshirt) {
-                int count = Integer.parseInt(tshirtCounter.getText()) + 1;
-                tshirtCounter.setText(String.valueOf(count));
-
-            }
-        }
-        else {
-            exceededQuantityTShirt.setText("You have exceeded the limit of TShirts");
-        }
-
-}
-
-
-    @FXML
-    void IncreaseitemTrousers(ActionEvent event) {
-        if (trouserQuantity < 10) {
-            trouserQuantity++;
-            if (event.getSource() == addQuantityTrousers) {
-                int count = Integer.parseInt(trouserCounter.getText()) + 1;
-                trouserCounter.setText(String.valueOf(count));
-            }
-        }
-        else {
-            exceededTrouserQuantity.setText("You have exceeded the limit of Trousers");
-        }
+        updateCounter("T-shirt", tshirtCounter,1);
     }
 
     @FXML
-    void SetUpAddToCartJumper(ActionEvent event) throws FileNotFoundException {
+    void IncreaseitemTrousers(ActionEvent event) {
+        updateCounter("Trousers", trouserCounter,1);
+    }
 
+    public void initialize() throws FileNotFoundException {
+        itemStockList = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
+
+        sizeChoiceTshirt.getItems().add("Small");
+        sizeChoiceTshirt.getItems().add("Medium");
+        sizeChoiceTshirt.getItems().add("Large");
+
+        sizeChoiceJumper.getItems().add("Small");
+        sizeChoiceJumper.getItems().add("Medium");
+        sizeChoiceJumper.getItems().add("Large");
+
+        sizeChoiceTrouser.getItems().add("Small");
+        sizeChoiceTrouser.getItems().add("Medium");
+        sizeChoiceTrouser.getItems().add("Large");
+
+    }
+    @FXML
+    void SetUpAddToCartJumper(ActionEvent event) throws FileNotFoundException {
+        confirmAvailability(event);
         String jumperSize = sizeChoiceJumper.getSelectionModel().getSelectedItem();
         if (jumperSize != null) {
             Item selectedJumper = getSelectedItem("Jumper"); // Get the selected jumper item
 
             // Check if a valid jumper item was found
             if (selectedJumper != null) {
-                cart.addItemToCart(selectedJumper, jumperQuantity);
+                cart.addItemToCart(selectedJumper, count);
 
                 // Create a string for the selected item and add it to the list
                 String itemDetails = "Item: " + selectedJumper.getItemName() +
                         "\nSize: " + selectedJumper.getItemSize() +
                         "\nPrice: " + selectedJumper.getItemPrice() +
-                        "\nQuantity: " + jumperQuantity + "\n";
+                        "\nQuantity: " + count + "\n";
 
                 cart.addSelectedItem(itemDetails);
             }
@@ -215,19 +184,20 @@ public class MinimalismController implements Initializable {
 
     @FXML
     public void SetUpAddToCartTrousers(ActionEvent event) throws FileNotFoundException {
+        confirmAvailability(event);
         String trouserSize = sizeChoiceTrouser.getSelectionModel().getSelectedItem();
         if (trouserSize != null) {
             Item selectedTrouser= getSelectedItem("Trousers"); // Get the selected trouser item
 
             // Check if a valid trouser item was found
             if (selectedTrouser != null) {
-                cart.addItemToCart(selectedTrouser, trouserQuantity);
+                cart.addItemToCart(selectedTrouser, count);
 
                 // Create a string for the selected item and add it to the list
                 String itemDetails = "Item: " + selectedTrouser.getItemName() +
                         "\nSize: " + selectedTrouser.getItemSize() +
                         "\nPrice: " + selectedTrouser.getItemPrice() +
-                        "\nQuantity: " + trouserQuantity + "\n";
+                        "\nQuantity: " + count + "\n";
 
                 cart.addSelectedItem(itemDetails);
             }
@@ -237,20 +207,21 @@ public class MinimalismController implements Initializable {
 
     @FXML
     void SetUpAddToCartTshirt(ActionEvent event) throws IOException {
+        confirmAvailability(event);
         String tshirtSize = sizeChoiceTshirt.getSelectionModel().getSelectedItem();
         if (tshirtSize != null) {
             Item selectedTShirt= getSelectedItem("T-shirt"); // Get the selected tshirt item
 
             // Check if a valid tshirt item was found
             if (selectedTShirt != null) {
-                cart.addItemToCart(selectedTShirt, tshirtQuantity);
+                cart.addItemToCart(selectedTShirt, count);
 
 
                 // Create a string for the selected item and add it to the list
                 String itemDetails = "Item: " + selectedTShirt.getItemName() +
                         "\nSize: " + selectedTShirt.getItemSize() +
                         "\nPrice: " + selectedTShirt.getItemPrice() +
-                        "\nQuantity: " + tshirtQuantity + "\n";
+                        "\nQuantity: " + count + "\n";
 
                 cart.addSelectedItem(itemDetails);
 
@@ -261,7 +232,6 @@ public class MinimalismController implements Initializable {
 
     @FXML
     void SetUpCheckout(ActionEvent event) throws IOException {
-
         FXMLLoader loader=new FXMLLoader();
         loader.setLocation(MinimalismController.class.getResource("cartfx.fxml"));
 
@@ -286,23 +256,10 @@ public class MinimalismController implements Initializable {
     void countTrouserSelection(MouseEvent event) {
     }
 
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        sizeChoiceTshirt.getItems().add("Small");
-        sizeChoiceTshirt.getItems().add("Medium");
-        sizeChoiceTshirt.getItems().add("Large");
 
-        sizeChoiceJumper.getItems().add("Small");
-        sizeChoiceJumper.getItems().add("Medium");
-        sizeChoiceJumper.getItems().add("Large");
 
-        sizeChoiceTrouser.getItems().add("Small");
-        sizeChoiceTrouser.getItems().add("Medium");
-        sizeChoiceTrouser.getItems().add("Large");
+    private Item getSelectedItem(String itemType) {
 
-    }
-
-    private Item getSelectedItem(String itemType) throws FileNotFoundException {
-        cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
         String selectedSize;
 
         if (itemType.equals("Jumper")) {
@@ -322,6 +279,56 @@ public class MinimalismController implements Initializable {
             }
         }
         return null; // Handle the case where the selected item is not found
+    }
+
+    @FXML
+    public void confirmAvailability(ActionEvent event) {
+        if(event.getSource() == AddCartTshirt) {
+            updateStockLevel("T-shirt", sizeChoiceTshirt.getValue(), tshirtCounter, itemStockList);
+        } else if (event.getSource() == AddCartJumper) {
+            updateStockLevel("Jumper", sizeChoiceJumper.getValue(), jumperCounter, itemStockList);
+        } else if (event.getSource() == AddCartTrousers) {
+            updateStockLevel("Trousers", sizeChoiceTrouser.getValue(), trouserCounter, itemStockList);
+        }
+    }
+
+    private void updateStockLevel(String itemName, String itemSize, Text countText, ArrayList<Item> itemStockList ) {
+        exceededTrouserQuantity.setText("");
+        exceededJumperQuantity.setText("");
+        exceededQuantityTShirt.setText("");
+        if(itemSize == null) {
+            countText.setFill(Color.RED);
+        }
+
+        for (Item item:itemStockList) {
+            if(itemName.equals(item.getItemName()) && itemSize.equals(item.getItemSize())) {
+                int availableStock = item.getItemStock();
+                int quantity = Integer.parseInt(countText.getText());
+                int newStock = availableStock - quantity;
+                if(newStock<0) {
+                    if(itemName.equals("Trousers")) {
+                        exceededTrouserQuantity.setText("Not enough trousers in stock");
+                    } else if (itemName.equals("T-shirt")) {
+                        exceededQuantityTShirt.setText("Not enough t-shirts in stock");
+                    } else if (itemName.equals("Jumper")) {
+                        exceededJumperQuantity.setText("Not enough jumpers in stock");
+                    }
+                    return;
+                }
+                item.setItemStock(newStock);
+
+            }
+        }
+    }
+    int count;
+
+    private void updateCounter(String itemType, Text countText, int sign) {
+        count = Integer.parseInt(countText.getText()) + sign;
+        if(count>=0) {
+            countText.setText(String.valueOf(count));
+        }
+
+        //return count;
     }
 
 
