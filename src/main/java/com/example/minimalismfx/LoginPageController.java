@@ -4,10 +4,14 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.PasswordField;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -48,6 +52,34 @@ public class LoginPageController {
         } else {
             showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid credentials. Please try again.");
         }
+
+        try {
+            FXMLLoader loader;
+            String title;
+
+            if (userType.equals("Shopper")) {
+                loader = new FXMLLoader(getClass().getResource("minimalismFX.fxml"));
+                title = "Shopper Home Page";
+            } else if (userType.equals("Staff")) {
+                loader = new FXMLLoader(getClass().getResource("adminPage.fxml"));
+                title = "Staff Home Page";
+            } else {
+                System.out.println("Invalid login type.");
+                return;
+            }
+
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+
+            Stage loginStage = (Stage) usernameField.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private boolean isValidLogin(String username, String password, String userType) {
@@ -60,7 +92,7 @@ public class LoginPageController {
                     String storedPassword = parts[1].trim();
                     String storedUserType = parts[2].trim();
                     if (username.equals(storedUsername) && password.equals(storedPassword) && userType.equals(storedUserType)) {
-                       return true;
+                        return true;
                     }
                 }
             }
@@ -83,4 +115,40 @@ public class LoginPageController {
 
     }
 
+    private void handleSuccessfulLogin (String loginType) {
+        try {
+            FXMLLoader loader;
+            String title;
+
+            if (loginType.equals("Shopper")) {
+                loader = new FXMLLoader(getClass().getResource("minimalismFX.fxml"));
+                title = "Shopper Home Page";
+            } else if (loginType.equals("Staff")) {
+                loader = new FXMLLoader(getClass().getResource("adminPage.fxml"));
+                title = "Staff Home Page";
+            } else {
+                System.out.println("Invalid login type.");
+                return;
+            }
+
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root));
+
+            Stage loginStage = (Stage) usernameField.getScene().getWindow();
+            loginStage.close();
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void setUpLoginButton (ActionEvent event) {
+        String loginType = userTypeBox.getValue();
+        handleSuccessfulLogin(loginType);
+    }
 }
+
