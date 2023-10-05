@@ -59,7 +59,7 @@ public class CartController {
     ShoppingCart cart;
     Item itemClass;
 
-    Admin admin;
+    Admin admin = new Admin();
 
     double totalPrice;
 
@@ -100,7 +100,7 @@ public class CartController {
             // Create Order
             admin.recordOrder(fullName, orderDetails);
             // Log price of order
-            admin.addToTotalSales();
+            admin.addToTotalSales(totalPrice);
             // Perform the checkout action
             root = FXMLLoader.load(CartController.class.getResource("checkoutFX.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -111,9 +111,9 @@ public class CartController {
             confirmationOfOrderText.setText("Please fill in all fields before checkout.");
         }
 
-        String newItemName = itemClass.getItemName();
-        String newItemSize = itemClass.getItemSize() ;
-        int newItemStock = itemClass.getItemStock();
+//        String newItemName = itemClass.getItemName();
+//        String newItemSize = itemClass.getItemSize() ;
+//        int newItemStock = itemClass.getItemStock();
     }
 
     @FXML

@@ -7,8 +7,6 @@ public class Admin {
 
     ArrayList<Order> allOrders = new ArrayList<>();
     double sum = 0;
-    CartController cart;
-
 
     // To be called when items are purchased
     void recordOrder(String userName, String item) {
@@ -27,8 +25,8 @@ public class Admin {
         return result.toString();
     }
 
-    void addToTotalSales(){
-        sum += cart.totalPrice;
+    void addToTotalSales(double totalPrice){
+        sum += totalPrice;
     }
 
 
