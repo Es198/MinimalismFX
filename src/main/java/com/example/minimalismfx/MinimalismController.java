@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -205,7 +206,7 @@ public class MinimalismController implements Initializable {
                 String itemDetails = "Item: " + selectedJumper.getItemName() +
                         "\nSize: " + selectedJumper.getItemSize() +
                         "\nPrice: " + selectedJumper.getItemPrice() +
-                        "\nQuantity: " + jumperQuantity + "\n\n";
+                        "\nQuantity: " + jumperQuantity + "\n";
 
                 cart.addSelectedItem(itemDetails);
             }
@@ -226,7 +227,7 @@ public class MinimalismController implements Initializable {
                 String itemDetails = "Item: " + selectedTrouser.getItemName() +
                         "\nSize: " + selectedTrouser.getItemSize() +
                         "\nPrice: " + selectedTrouser.getItemPrice() +
-                        "\nQuantity: " + trouserQuantity + "\n\n";
+                        "\nQuantity: " + trouserQuantity + "\n";
 
                 cart.addSelectedItem(itemDetails);
             }
@@ -249,9 +250,10 @@ public class MinimalismController implements Initializable {
                 String itemDetails = "Item: " + selectedTShirt.getItemName() +
                         "\nSize: " + selectedTShirt.getItemSize() +
                         "\nPrice: " + selectedTShirt.getItemPrice() +
-                        "\nQuantity: " + tshirtQuantity + "\n\n";
+                        "\nQuantity: " + tshirtQuantity + "\n";
 
                 cart.addSelectedItem(itemDetails);
+
             }
 
         }

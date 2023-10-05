@@ -2,10 +2,16 @@ package com.example.minimalismfx;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -39,7 +45,7 @@ public class CartController {
     private Label orderDetailsLabel;
 
     @FXML
-    private TextArea orderTextArea;
+    private Button backButton;
 
 
 
@@ -68,14 +74,41 @@ public class CartController {
     public void updateItemDetails (String itemDetails) {
 
         System.out.println(itemDetails);
-        orderDetailsLabel.setText(itemDetails);
         summaryOrderText.setText(itemDetails);
-        orderTextArea.setText(itemDetails);
 
     }
 
     @FXML
     void setUpCheckoutHandler(ActionEvent event) {
+        // Check if the text fields are populated
+        String fullName = cartNameTextField.getText();
+        String cardDetails = cartCardDetailsTextField.getText();
+        String address = cartAddressTextField.getText();
+
+        if (!fullName.isEmpty() && !cardDetails.isEmpty() && !address.isEmpty()) {
+            // Perform the checkout action
+            confirmationOfOrderText.setText("Checkout successful!");
+            // You can add your checkout logic here
+        } else {
+            confirmationOfOrderText.setText("Please fill in all fields before checkout.");
+        }
+    }
+
+    @FXML
+    void backToHomeScreen(ActionEvent event) throws IOException {
+
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(MinimalismController.class.getResource("minimalismFX.fxml"));
+
+        Parent rootParent =loader.load();
+        Scene rootScene = new Scene(rootParent);
+        MinimalismController controller=loader.getController();
+//        controller.setCart(cart);
+//        controller.initialize(null, null);
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(rootScene);
+        stage.show();
 
     }
 
