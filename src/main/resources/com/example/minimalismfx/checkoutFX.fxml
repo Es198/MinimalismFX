@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.minimalismfx.CheckoutController">
+   <children>
+      <Text fx:id="DisplayTextThankYou" fill="#5234e7" layoutX="92.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thank you for ordering from MinimalismFX">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Text fx:id="DisplayTextOrderShipped" fill="#120671" layoutX="179.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your order is being shipped!">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="DisplayTextDeliveryTime" fill="#1a013b" layoutX="182.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please expect 3-5 working days for your delivery" />
+      <Text fx:id="DisplayTextDeliveryTime1" fill="#1a013b" layoutX="182.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please expect 3-5 working days for your delivery" />
+      <Text fx:id="DisplayTextDeliveryTime2" fill="#1a013b" layoutX="182.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please expect 3-5 working days for your delivery" />
+      <ImageView fx:id="movingVanImage" fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@moving van" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

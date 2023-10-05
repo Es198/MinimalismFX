@@ -12,6 +12,8 @@ public class ShoppingCart {
 
     ArrayList<Item> items = new ArrayList<>();
     HashMap<Item, Integer> cartItems = new HashMap<>();
+    ArrayList<String> selectedItems = new ArrayList<String>();
+
 
     public void readingCSVFile(String filePath) throws FileNotFoundException {
 
@@ -22,7 +24,8 @@ public class ShoppingCart {
                 if (itemRow.length == 4) {
                     String itemName = itemRow[0].trim();
                     String itemSize = itemRow[1].trim();
-                    double itemPrice = Double.parseDouble(itemRow[2].trim());
+                    String itemPriceStr = itemRow[2].trim().replaceAll("[^0-9.]", ""); // Remove non-numeric characters
+                    double itemPrice = Double.parseDouble(itemPriceStr);
                     int itemStock = java.lang.Integer.parseInt(itemRow[3].trim());
                     items.add(new Item(itemName, itemSize, itemPrice, itemStock));
                 }
@@ -57,7 +60,19 @@ public class ShoppingCart {
         for(Map.Entry<Item, Integer> entry : cartItems.entrySet()) {
             totalPrice += entry.getKey().getItemPrice() * entry.getValue();
         }
+        // Round the total price to 2 decimal places
+        totalPrice = Math.round(totalPrice * 100.0) / 100.0;
         return totalPrice;
     }
+
+    public void addSelectedItem(String itemDetails) {
+        selectedItems.add(String.valueOf(itemDetails));
+    }
+
+    public ArrayList<String> getSelectedItems() {
+        return selectedItems;
+    }
+
+
 
 }
