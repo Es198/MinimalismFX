@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.minimalismfx.AdminController">
+    <VBox fx:id="tshirtVBox" layoutX="14.0" layoutY="238.0" prefHeight="148.0" prefWidth="165.0">
+        <children>
+            <VBox>
+                <children>
+                    <ImageView fitHeight="119.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true" translateX="25.0">
+                  <image>
+                     <Image url="@tshirt.png" />
+                  </image></ImageView>
+                </children>
+            </VBox>
+            <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="101.0">
+                <children>
+                    <Button fx:id="tshirtMinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-15.0" />
+               <Text fx:id="tshirtCount" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-10.0">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </Text>
+                    <Button fx:id="tshirtPlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
+               <ChoiceBox fx:id="tshirtSizeBox" prefHeight="25.0" prefWidth="8.0" />
+               <Button fx:id="tshirtConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
+                </children>
+            </HBox>
+        </children>
+    </VBox>
+   <VBox fx:id="jumperVBox" layoutX="218.0" layoutY="238.0" prefHeight="148.0" prefWidth="165.0">
+      <children>
+         <VBox>
+            <children>
+               <ImageView fitHeight="119.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true" translateX="30.0">
+                  <image>
+                     <Image url="@jumper.jpg" />
+                  </image></ImageView>
+            </children>
+         </VBox>
+         <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="101.0">
+            <children>
+               <Button fx:id="jumperMinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-15.0" />
+               <Text fx:id="jumperCount" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-10.0">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </Text>
+               <Button fx:id="jumperPlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
+               <ChoiceBox fx:id="jumperSizeBox" prefHeight="25.0" prefWidth="8.0" />
+               <Button fx:id="jumperConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
+            </children>
+         </HBox>
+      </children>
+   </VBox>
+   <VBox fx:id="item3VBox" layoutX="421.0" layoutY="238.0" prefHeight="148.0" prefWidth="165.0">
+      <children>
+         <VBox>
+            <children>
+               <ImageView fitHeight="119.0" fitWidth="165.0" pickOnBounds="true" preserveRatio="true" translateX="25.0">
+                  <image>
+                     <Image url="@trousers.jpg" />
+                  </image></ImageView>
+            </children>
+         </VBox>
+         <HBox alignment="BOTTOM_CENTER" prefHeight="27.0" prefWidth="101.0">
+            <children>
+               <Button fx:id="trouserMinusButton" mnemonicParsing="false" onAction="#decrementCounter" text="-" translateX="-15.0" />
+               <Text fx:id="trouserCount" strokeType="OUTSIDE" strokeWidth="0.0" text="0" translateX="-10.0">
+                  <font>
+                     <Font size="20.0" />
+                  </font>
+               </Text>
+               <Button fx:id="trouserPlusButton" mnemonicParsing="false" onAction="#incrementCounter" text="+" translateX="-5.0" />
+               <ChoiceBox fx:id="trouserSizeBox" prefHeight="25.0" prefWidth="8.0" />
+               <Button fx:id="trouserConfirmButton" mnemonicParsing="false" onAction="#confirmStockChange" text="Confirm" translateX="10.0" />
+            </children>
+         </HBox>
+      </children>
+   </VBox>
+   <Text fx:id="stockChartHeading" layoutX="77.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Stock Levels">
+      <font>
+         <Font size="20.0" />
+      </font></Text>
+   <Text fx:id="allOrdersHeading" layoutX="307.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Orders">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Text>
+   <Text fx:id="totalSalesHeading" layoutX="488.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Sales">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Text>
+   <Text fx:id="totalSalesAmount" layoutX="525.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="£0">
+      <font>
+         <Font size="20.0" />
+      </font>
+   </Text>
+   <Text fx:id="ordersList" layoutX="293.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item 1 - Date - Amount" />
+   <TableView fx:id="stockTable" layoutX="15.0" layoutY="68.0" prefHeight="141.0" prefWidth="239.0">
+     <columns>
+       <TableColumn fx:id="itemNameCol" prefWidth="54.0" text="Item" />
+       <TableColumn fx:id="itemSizeCol" prefWidth="57.0" text="Size" />
+        <TableColumn fx:id="itemPriceCol" minWidth="0.0" prefWidth="63.0" text="Price (£)" />
+        <TableColumn fx:id="itemStockCol" prefWidth="64.0" text="Stock" />
+     </columns>
+   </TableView>
+
+</AnchorPane>

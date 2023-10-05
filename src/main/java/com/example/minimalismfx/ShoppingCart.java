@@ -15,7 +15,7 @@ public class ShoppingCart {
     ArrayList<String> selectedItems = new ArrayList<String>();
 
 
-    public void readingCSVFile(String filePath) throws FileNotFoundException {
+    public ArrayList<Item> readingCSVFile(String filePath) throws FileNotFoundException {
 
         try (Scanner txtScanner = new Scanner(new File(filePath))) {
             while (txtScanner.hasNextLine()) {
@@ -30,6 +30,7 @@ public class ShoppingCart {
                     items.add(new Item(itemName, itemSize, itemPrice, itemStock));
                 }
             }
+            return items;
         } catch (FileNotFoundException e) {
             throw new FileNotFoundException("Hey, we couldn't find the item: " + e);
         }
