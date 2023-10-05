@@ -1,5 +1,6 @@
 package com.example.minimalismfx;
 
+import javafx.beans.value.ObservableStringValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -113,6 +114,11 @@ public class AdminController {
         populateSizeChoiceBoxes();
         populateStockTable();
         populateOrdersList();
+        populateTotalSales();
+    }
+
+    private void populateTotalSales() {
+        totalSalesAmount.setText("£ " + String.valueOf(admin.sum));
     }
 
     private void populateOrdersList() {

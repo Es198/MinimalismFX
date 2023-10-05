@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Admin {
 
     ArrayList<Order> allOrders = new ArrayList<>();
-    double sum;
+    double sum = 0;
     CartController cart;
 
 
