@@ -85,7 +85,7 @@ public class CartController {
     }
 
     @FXML
-    void setUpCheckoutHandler(ActionEvent event) {
+    void setUpCheckoutHandler(ActionEvent event) throws IOException {
         // Check if the text fields are populated
         String fullName = cartNameTextField.getText();
         String cardDetails = cartCardDetailsTextField.getText();
