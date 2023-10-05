@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -104,6 +105,7 @@ public class MinimalismController implements Initializable {
 
 
     ShoppingCart cart = new ShoppingCart();
+    ArrayList<Item> itemStockList;
 
 //    HashMap<Item, Integer> items;
 
@@ -114,81 +116,32 @@ public class MinimalismController implements Initializable {
 
     @FXML
     void AddItemJumper(ActionEvent event) {
-        if (jumperQuantity < 10) {
-            jumperQuantity++;
-            if(event.getSource() == addQuantityJumper) {
-                int count = Integer.parseInt(jumperCounter.getText()) + 1;
-                jumperCounter.setText(String.valueOf(count));
-            }
-        }
-        else {
-            exceededJumperQuantity.setText("You have exceeded the limit of Jumpers");
-        }
+        updateCounter(jumperCounter,1);
     }
 
     @FXML
     void DecreaseItemJumper(ActionEvent event) {
-        if (jumperQuantity > 0) {
-            jumperQuantity--;
-            if (event.getSource() == decreaseQuantityJumper) {
-                int count = Integer.parseInt(jumperCounter.getText()) - 1;
-                jumperCounter.setText(String.valueOf(count));
-            }
-        }
-
+        updateCounter(jumperCounter, -1);
     }
 
     @FXML
     void DecreaseItemTrousers(ActionEvent event) {
-        if (trouserQuantity > 0) {
-            trouserQuantity--;
-            if (event.getSource() == decreaseQuantityTrousers) {
-                int count = Integer.parseInt(trouserCounter.getText()) - 1;
-                trouserCounter.setText(String.valueOf(count));
-            }
-        }
+        updateCounter(trouserCounter, -1);
     }
 
     @FXML
     void DecreaseItemTshirt(ActionEvent event) {
-        if (tshirtQuantity > 0) {
-            tshirtQuantity--;
-            if (event.getSource() == decreaseQuantityTshirt) {
-                int count = Integer.parseInt(tshirtCounter.getText()) - 1;
-                tshirtCounter.setText(String.valueOf(count));
-            }
-        }
+        updateCounter(tshirtCounter, -1);
     }
 
     @FXML
     void IncreaseItemTshirt(ActionEvent event) {
-        if (tshirtQuantity < 10) {
-            tshirtQuantity++;
-            if (event.getSource() == addQuantityTshirt) {
-                int count = Integer.parseInt(tshirtCounter.getText()) + 1;
-                tshirtCounter.setText(String.valueOf(count));
-
-            }
-        }
-        else {
-            exceededQuantityTShirt.setText("You have exceeded the limit of TShirts");
-        }
-
-}
-
+        updateCounter(tshirtCounter,1);
+    }
 
     @FXML
     void IncreaseitemTrousers(ActionEvent event) {
-        if (trouserQuantity < 10) {
-            trouserQuantity++;
-            if (event.getSource() == addQuantityTrousers) {
-                int count = Integer.parseInt(trouserCounter.getText()) + 1;
-                trouserCounter.setText(String.valueOf(count));
-            }
-        }
-        else {
-            exceededTrouserQuantity.setText("You have exceeded the limit of Trousers");
-        }
+        updateCounter(trouserCounter,1);
     }
 
     @FXML
@@ -322,6 +275,41 @@ public class MinimalismController implements Initializable {
             }
         }
         return null; // Handle the case where the selected item is not found
+    }
+
+    @FXML
+    public void confirmAvailability(ActionEvent event) {
+        if(event.getSource() == AddCartTshirt) {
+            updateStockLevel("T-shirt", sizeChoiceTshirt.getValue(), tshirtCounter, itemStockList);
+        } else if (event.getSource() == AddCartJumper) {
+            updateStockLevel("Jumper", sizeChoiceJumper.getValue(), jumperCounter, itemStockList);
+        } else if (event.getSource() == AddCartTrousers) {
+            updateStockLevel("Trousers", sizeChoiceTrouser.getValue(), trouserCounter, itemStockList);
+        }
+    }
+
+    private void updateStockLevel(String itemName, String itemSize, Text countText, ArrayList<Item> itemStockList ) {
+        if(itemSize == null) {
+            countText.setFill(Color.RED);
+        }
+
+        for (Item item:itemStockList) {
+            if(itemName.equals(item.getItemName()) && itemSize.equals(item.getItemSize())) {
+                int availableStock = item.getItemStock();
+                int quantity = Integer.parseInt(countText.getText());
+                int newStock = availableStock - quantity;
+                item.setItemStock(newStock);
+
+            }
+        }
+    }
+
+    private void updateCounter(Text countText, int sign) {
+        int count = Integer.parseInt(countText.getText()) + sign;
+        if(count<0) {
+            countText.setFill(Color.RED);
+        }
+        countText.setText(String.valueOf(count));
     }
 
 
