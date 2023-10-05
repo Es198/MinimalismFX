@@ -57,6 +57,7 @@ public class CartController {
 
 
     ShoppingCart cart;
+    Item itemClass;
 
     public CartController() {
 
@@ -101,6 +102,10 @@ public class CartController {
         } else {
             confirmationOfOrderText.setText("Please fill in all fields before checkout.");
         }
+
+        String newItemName = itemClass.getItemName();
+        String newItemSize = itemClass.getItemSize() ;
+        int newItemStock = itemClass.getItemStock();
     }
 
     @FXML
