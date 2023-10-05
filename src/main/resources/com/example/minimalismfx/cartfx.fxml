@@ -4,8 +4,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
-
 
 <AnchorPane prefHeight="427.0" prefWidth="626.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.minimalismfx.CartController">
    <children>
@@ -13,7 +13,15 @@
       <TextField fx:id="cartNameTextField" alignment="CENTER" layoutX="387.0" layoutY="201.0" onAction="#userNameCartTextField" promptText="Full Name" />
       <TextField fx:id="cartCardDetailsTextField" alignment="CENTER" layoutX="387.0" layoutY="234.0" onAction="#userCardDetailsCartTextField" promptText="Card Details" />
       <TextField fx:id="cartAddressTextField" alignment="CENTER" layoutX="387.0" layoutY="271.0" onAction="#userAddressCartTextField" promptText="Address" />
-      <Text fx:id="cartTotalPriceText" layoutX="454.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Label fx:id="cartTotalPriceLabel" layoutX="438.0" layoutY="26.0" text="Total Price" />
+      <Text fx:id="cartTotalPriceText" layoutX="447.0" layoutY="82.0" onDragDetected="#totalPriceTextAction" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="111.0" />
+      <Label fx:id="cartTotalPriceLabel" layoutX="438.0" layoutY="26.0" style="-fx-font-size: 16; -fx-font-weight: bold; -fx-font-weight: bold;" text="Total Price" />
+      <Text fx:id="confirmationOfOrderText" layoutX="378.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="222.0" />
+      <Text fx:id="summaryOrderText" layoutX="44.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="93.0" />
+      <Label fx:id="orderDetailsLabel" layoutX="35.0" layoutY="26.0" prefHeight="20.0" prefWidth="111.0" text="Order Summary">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="backButton" layoutX="24.0" layoutY="340.0" mnemonicParsing="false" onAction="#backToHomeScreen" text="Back" />
    </children>
 </AnchorPane>
