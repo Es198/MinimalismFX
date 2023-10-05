@@ -118,7 +118,7 @@ public class AdminController {
     }
 
     private void populateTotalSales() {
-        totalSalesAmount.setText("£ " + String.valueOf(admin.sum));
+        totalSalesAmount.setText("£ " + admin.sum);
     }
 
     private void populateOrdersList() {
