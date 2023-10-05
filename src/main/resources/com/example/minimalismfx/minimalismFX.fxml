@@ -4,105 +4,58 @@
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="764.0" prefWidth="1175.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.minimalismfx.MinimalismController">
    <children>
-      <Text layoutX="479.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="MinimalismFX" wrappingWidth="201.998046875">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </Text>
-      <VBox layoutX="61.0" layoutY="147.0" prefHeight="235.0" prefWidth="263.0">
-         <children>
-            <VBox />
-            <ImageView fx:id="ImageTshirt" fitHeight="175.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@tshirt.jpeg" />
-               </image></ImageView>
-            <HBox alignment="BOTTOM_CENTER" prefHeight="75.0" prefWidth="244.0">
-               <children>
-                  <Button fx:id="AddCartTshirt" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#SetUpAddToCartTshirt" text="Add to Cart" />
-                  <Button fx:id="decreaseQuantityTshirt" mnemonicParsing="false" onAction="#DecreaseItemTshirt" text="-" translateX="10.0" />
-                  <Button fx:id="addQuantityTshirt" mnemonicParsing="false" onAction="#IncreaseItemTshirt" text="+" translateX="20.0" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
       <Group layoutX="821.0" layoutY="241.0" />
-      <MenuBar fx:id="MenuID" layoutX="14.0" layoutY="25.0">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <VBox layoutX="401.0" layoutY="147.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="219.0">
-         <children>
-            <VBox />
-            <ImageView fx:id="ImageJumper" fitHeight="158.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images.jpeg" />
-               </image></ImageView>
-            <HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="75.0" prefWidth="192.0">
-               <children>
-                  <Button fx:id="AddCartJumper" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#SetUpAddToCartJumper" text="Add to Cart" />
-                  <Button fx:id="decreaseQuantityJumper" mnemonicParsing="false" onAction="#DecreaseItemJumper" text="-" translateX="10.0" />
-                  <Button fx:id="addQuantityJumper" mnemonicParsing="false" onAction="#AddItemJumper" text="+" translateX="20.0" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <VBox layoutX="795.0" layoutY="147.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="237.0">
-         <children>
-            <VBox />
-            <ImageView fx:id="ImageTrousers" fitHeight="158.0" fitWidth="280.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@trouser.jpeg" />
-               </image>
-               <viewport>
-                  <Rectangle2D />
-               </viewport>
-            </ImageView>
-            <HBox alignment="BOTTOM_CENTER" prefHeight="75.0" prefWidth="244.0">
-               <children>
-                  <Button fx:id="AddCartTrousers" alignment="BOTTOM_LEFT" mnemonicParsing="false" onAction="#SetUpAddToCartTrousers" text="Add to Cart" />
-                  <Button fx:id="decreaseQuantityTrousers" mnemonicParsing="false" onAction="#DecreaseItemTrousers" text="-" translateX="10.0" />
-                  <Button fx:id="addQuantityTrousers" mnemonicParsing="false" onAction="#IncreaseitemTrousers" text="+" translateX="20.0" />
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-      <Button fx:id="CheckoutID" layoutX="460.0" layoutY="506.0" mnemonicParsing="false" onAction="#SetUpCheckout" text="Checkout Now" />
-      <ChoiceBox fx:id="sizeChoiceTshirt" layoutX="140.0" layoutY="399.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="sizeChoiceJumper" layoutX="436.0" layoutY="399.0" prefWidth="150.0" />
-      <ChoiceBox fx:id="sizeChoiceTrouser" layoutX="849.0" layoutY="399.0" prefWidth="150.0" />
-      <Text fx:id="tshirtCounter" layoutX="341.0" layoutY="371.0" onDragDetected="#countTShirtSelection" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="23.0" />
-      <Text fx:id="jumperCounter" layoutX="631.0" layoutY="371.0" onDragDetected="#countJumperSelection" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Text fx:id="trouserCounter" layoutX="1024.0" layoutY="378.0" onDragDetected="#countTrouserSelection" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
-      <Text fx:id="exceededQuantityTShirt" fill="#d70e0e" layoutX="115.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="268.0" />
-      <Text fx:id="exceededJumperQuantity" fill="#dd1212" layoutX="412.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="243.0" />
-      <Text fx:id="exceededTrouserQuantity" fill="#dd1313" layoutX="806.0" layoutY="449.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="280.0" />
+      <Button fx:id="CheckoutID" layoutX="461.0" layoutY="646.0" mnemonicParsing="false" onAction="#SetUpCheckout" style="-fx-background-color: #1a723b;" text="Checkout Now" textFill="#0d0d0d" />
+      <ChoiceBox fx:id="sizeChoiceTshirt" layoutX="118.0" layoutY="572.0" prefWidth="150.0" />
+      <ImageView fx:id="ImageTrousers" fitHeight="184.0" fitWidth="182.0" layoutX="771.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@trouser.jpeg" />
+         </image>
+         <viewport>
+            <Rectangle2D />
+         </viewport>
+      </ImageView>
+      <HBox alignment="BOTTOM_CENTER" layoutX="710.0" layoutY="328.0" prefHeight="60.0" prefWidth="237.0" />
+      <ChoiceBox fx:id="sizeChoiceJumper" layoutX="436.0" layoutY="572.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="sizeChoiceTrouser" layoutX="757.0" layoutY="572.0" prefWidth="150.0" />
+      <Text fx:id="tshirtCounter" layoutX="312.0" layoutY="534.0" onDragDetected="#countTShirtSelection" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="23.0" />
+      <Text fx:id="jumperCounter" layoutX="620.0" layoutY="534.0" onDragDetected="#countJumperSelection" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="trouserCounter" layoutX="943.0" layoutY="538.0" onDragDetected="#countTrouserSelection" strokeType="OUTSIDE" strokeWidth="0.0" text="0" />
+      <Text fx:id="exceededQuantityTShirt" fill="#d70e0e" layoutX="65.0" layoutY="621.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="268.0" />
+      <ImageView fitHeight="368.0" fitWidth="563.0" layoutX="241.0" layoutY="-92.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@MiniLogo.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="exceededJumperQuantity" fill="#dd1212" layoutX="401.0" layoutY="621.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="243.0" />
+      <Text fx:id="exceededTrouserQuantity" fill="#dd1313" layoutX="749.0" layoutY="621.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="195.0" />
+      <Button fx:id="AddCartTshirt" alignment="BOTTOM_LEFT" layoutX="118.0" layoutY="517.0" mnemonicParsing="false" onAction="#SetUpAddToCartTshirt" text="Add to Cart" />
+      <Button fx:id="decreaseQuantityTshirt" layoutX="209.0" layoutY="517.0" mnemonicParsing="false" onAction="#DecreaseItemTshirt" text="-" />
+      <Button fx:id="addQuantityTshirt" layoutX="249.0" layoutY="517.0" mnemonicParsing="false" onAction="#IncreaseItemTshirt" text="+" />
+      <ImageView fx:id="ImageTshirt" fitHeight="175.0" fitWidth="278.0" layoutX="61.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@tshirt.jpeg" />
+         </image>
+      </ImageView>
+      <Button fx:id="AddCartJumper" alignment="BOTTOM_LEFT" layoutX="441.0" layoutY="516.0" mnemonicParsing="false" onAction="#SetUpAddToCartJumper" text="Add to Cart" />
+      <Button fx:id="decreaseQuantityJumper" layoutX="534.0" layoutY="516.0" mnemonicParsing="false" onAction="#DecreaseItemJumper" text="-" />
+      <Button fx:id="addQuantityJumper" layoutX="573.0" layoutY="516.0" mnemonicParsing="false" onAction="#AddItemJumper" text="+" />
+      <ImageView fx:id="ImageJumper" fitHeight="158.0" fitWidth="280.0" layoutX="392.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images.jpeg" />
+         </image>
+      </ImageView>
+      <Button fx:id="AddCartTrousers" alignment="BOTTOM_LEFT" layoutX="765.0" layoutY="520.0" mnemonicParsing="false" onAction="#SetUpAddToCartTrousers" text="Add to Cart" />
+      <Button fx:id="decreaseQuantityTrousers" layoutX="855.0" layoutY="521.0" mnemonicParsing="false" onAction="#DecreaseItemTrousers" text="-" />
+      <Button fx:id="addQuantityTrousers" layoutX="894.0" layoutY="521.0" mnemonicParsing="false" onAction="#IncreaseitemTrousers" text="+" />
+      <Button fx:id="logoutButton" layoutX="881.0" layoutY="25.0" mnemonicParsing="false" onAction="#setUpLogoutButton" text="logout" />
    </children>
 </AnchorPane>

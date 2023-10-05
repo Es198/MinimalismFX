@@ -23,7 +23,7 @@
       <Text fx:id="DisplayTextDeliveryTime2" fill="#1a013b" layoutX="182.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Please expect 3-5 working days for your delivery" />
       <ImageView fx:id="movingVanImage" fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@moving van" />
+            <Image url="@moving van.jpg" />
          </image>
       </ImageView>
    </children>

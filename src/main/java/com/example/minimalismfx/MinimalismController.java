@@ -97,6 +97,9 @@ public class MinimalismController implements Initializable {
     @FXML
     private Text exceededTrouserQuantity;
 
+    @FXML
+    private Button logoutButton;
+
 
     private Stage stage;
     private Scene scene;
@@ -201,6 +204,7 @@ public class MinimalismController implements Initializable {
             // Check if a valid jumper item was found
             if (selectedJumper != null) {
                 cart.addItemToCart(selectedJumper, jumperQuantity);
+                exceededJumperQuantity.setText("Jumper added to cart");
 
                 // Create a string for the selected item and add it to the list
                 String itemDetails = "Item: " + selectedJumper.getItemName() +
@@ -222,6 +226,7 @@ public class MinimalismController implements Initializable {
             // Check if a valid trouser item was found
             if (selectedTrouser != null) {
                 cart.addItemToCart(selectedTrouser, trouserQuantity);
+                exceededTrouserQuantity.setText("Trouser added to cart");
 
                 // Create a string for the selected item and add it to the list
                 String itemDetails = "Item: " + selectedTrouser.getItemName() +
@@ -244,6 +249,7 @@ public class MinimalismController implements Initializable {
             // Check if a valid tshirt item was found
             if (selectedTShirt != null) {
                 cart.addItemToCart(selectedTShirt, tshirtQuantity);
+                exceededQuantityTShirt.setText("T-Shirt added to cart");
 
 
                 // Create a string for the selected item and add it to the list
@@ -274,6 +280,22 @@ public class MinimalismController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(rootScene);
         stage.show();
+    }
+
+    @FXML
+    void setUpLogoutButton(ActionEvent event) throws IOException {
+
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(MinimalismController.class.getResource("LoginPageV2.fxml"));
+
+        Parent rootParent =loader.load();
+        Scene rootScene = new Scene(rootParent);
+        LoginPageController controller=loader.getController();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(rootScene);
+        stage.show();
+
     }
     @FXML
     void countJumperSelection(MouseEvent event) {
