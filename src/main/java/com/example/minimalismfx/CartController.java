@@ -60,6 +60,8 @@ public class CartController {
 
     Admin admin;
 
+    double totalPrice;
+
     public CartController() {
 
     }
@@ -96,6 +98,8 @@ public class CartController {
         if (!fullName.isEmpty() && !cardDetails.isEmpty() && !address.isEmpty()) {
             // Create Order
             admin.recordOrder(fullName, orderDetails);
+            // Log price of order
+            admin.addToTotalSales();
             // Perform the checkout action
             root = FXMLLoader.load(CartController.class.getResource("checkoutFX.fxml"));
             stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -149,7 +153,7 @@ public class CartController {
     }
     @FXML
     void initialize(URL url, ResourceBundle resourceBundle) {
-        double totalPrice = cart.calculateTotalValueOfShoppingCart();
+        totalPrice = cart.calculateTotalValueOfShoppingCart();
         cartTotalPriceText.setText("£" + totalPrice);
 
         // Get the selected items
