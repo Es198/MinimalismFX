@@ -101,6 +101,12 @@ public class CartController {
                     e.printStackTrace();
                 }
             }
+
+            // Perform the checkout action
+            root = FXMLLoader.load(CartController.class.getResource("checkoutFX.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
         }
         else {
             confirmationOfOrderText.setText("Please fill in all fields before checkout.");
@@ -108,11 +114,7 @@ public class CartController {
             admin.recordOrder(fullName, orderDetails);
             // Log price of order
             admin.addToTotalSales(totalPrice);
-            // Perform the checkout action
-            root = FXMLLoader.load(CartController.class.getResource("checkoutFX.fxml"));
-            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
+
             // You can add your checkout logic here
     }
 

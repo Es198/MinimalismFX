@@ -51,44 +51,45 @@ public class LoginPageController {
 
         if (isValidLogin(username, password, userType)) {
             showAlert(Alert.AlertType.INFORMATION, "Login Successful", "Welcome, " + userType + "!");
+            try {
+                FXMLLoader loader;
+                String title;
+
+                Parent root;
+
+                if (userType.equals("Shopper")) {
+                    loader = new FXMLLoader(getClass().getResource("minimalismFX.fxml"));
+                    title = "Shopper Home Page";
+                    root = loader.load();
+                    MinimalismController minimalismController = loader.getController();
+
+                } else if (userType.equals("Staff")) {
+                    loader = new FXMLLoader(getClass().getResource("adminPage.fxml"));
+                    title = "Staff Home Page";
+                    root = loader.load();
+                    AdminController adminController = loader.getController();
+
+                } else {
+                    System.out.println("Invalid login type.");
+                    return;
+                }
+
+                Stage stage = new Stage();
+                stage.setTitle(title);
+                stage.setScene(new Scene(root));
+
+                Stage loginStage = (Stage) usernameField.getScene().getWindow();
+                loginStage.close();
+
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         } else {
             showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid credentials. Please try again.");
         }
 
-        try {
-            FXMLLoader loader;
-            String title;
 
-            Parent root;
-
-            if (userType.equals("Shopper")) {
-                loader = new FXMLLoader(getClass().getResource("minimalismFX.fxml"));
-                title = "Shopper Home Page";
-                root = loader.load();
-                MinimalismController minimalismController = loader.getController();
-
-            } else if (userType.equals("Staff")) {
-                loader = new FXMLLoader(getClass().getResource("adminPage.fxml"));
-                title = "Staff Home Page";
-                root = loader.load();
-                AdminController adminController = loader.getController();
-
-            } else {
-                System.out.println("Invalid login type.");
-                return;
-            }
-
-            Stage stage = new Stage();
-            stage.setTitle(title);
-            stage.setScene(new Scene(root));
-
-            Stage loginStage = (Stage) usernameField.getScene().getWindow();
-            loginStage.close();
-
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
     }
 
     private boolean isValidLogin(String username, String password, String userType) {
