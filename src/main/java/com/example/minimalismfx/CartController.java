@@ -53,7 +53,10 @@ public class CartController {
     private Label orderDetailsLabel;
 
     @FXML
-    private Button backButton;
+    private Button backToHomeButton;
+
+    @FXML
+    private Button logoutButton;
 
     String orderDetails;
 
@@ -114,16 +117,27 @@ public class CartController {
     }
 
     @FXML
-    void backToHomeScreen(ActionEvent event) throws IOException {
+    void setUpBackToHome(ActionEvent event) throws IOException {
 
         FXMLLoader loader=new FXMLLoader();
-        loader.setLocation(MinimalismController.class.getResource("minimalismFX.fxml"));
-
+        loader.setLocation(CartController.class.getResource("minimalismFX.fxml"));
         Parent rootParent =loader.load();
         Scene rootScene = new Scene(rootParent);
         MinimalismController controller=loader.getController();
-//        controller.setCart(cart);
-//        controller.initialize(null, null);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(rootScene);
+        stage.show();
+    }
+
+    @FXML
+
+    void setUpLogoutButton(ActionEvent event)throws IOException {
+        FXMLLoader loader=new FXMLLoader();
+        loader.setLocation(CartController.class.getResource("LoginPageV2.fxml"));
+
+        Parent rootParent =loader.load();
+        Scene rootScene = new Scene(rootParent);
+        //LoginPageController controller=loader.getController();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(rootScene);

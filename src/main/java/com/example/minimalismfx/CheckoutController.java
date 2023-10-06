@@ -68,25 +68,21 @@ public class CheckoutController {
     void setUpBackToHome(ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader();
         loader.setLocation(CheckoutController.class.getResource("minimalismFX.fxml"));
-
         Parent rootParent =loader.load();
         Scene rootScene = new Scene(rootParent);
-        //LoginPageController controller=loader.getController();
-
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(rootScene);
         stage.show();
 
     }
 
+ 
     @FXML
     void setUpLogout(ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader();
         loader.setLocation(CheckoutController.class.getResource("LoginPageV2.fxml"));
-
         Parent rootParent =loader.load();
         Scene rootScene = new Scene(rootParent);
-        //LoginPageController controller=loader.getController();
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(rootScene);
