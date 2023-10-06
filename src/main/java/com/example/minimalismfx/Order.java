@@ -1,6 +1,7 @@
 package com.example.minimalismfx;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Order {
         private final String userName;
@@ -14,7 +15,9 @@ public class Order {
         }
 
         public String toString(){
-                return userName + " at " + orderDateTime + " ordered:\n" + item;
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                String formattedDateTime = orderDateTime.format(formatter);
+                return userName + " at " + formattedDateTime + " ordered:\n" + item;
         }
 
 

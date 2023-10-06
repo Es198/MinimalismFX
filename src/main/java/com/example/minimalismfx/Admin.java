@@ -8,6 +8,16 @@ public class Admin {
     ArrayList<Order> allOrders = new ArrayList<>();
     double sum = 0;
 
+    private static Admin instance;
+
+    public static Admin getInstance() {
+        if (instance == null) {
+            instance = new Admin();
+        }
+        return instance;
+    }
+
+
     // To be called when items are purchased
     void recordOrder(String userName, String item) {
         Order order = new Order(userName, item, LocalDateTime.now());
