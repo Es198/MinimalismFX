@@ -14,9 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -159,6 +157,7 @@ public class AdminController {
     }
 
     private void updateStock(String itemName, String size, Text countText, ArrayList<Item> items) throws IOException {
+        items = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
         if (size == null){
             countText.setFill(Color.RED);
             return;
@@ -170,6 +169,13 @@ public class AdminController {
                 int quantity = Integer.parseInt(countText.getText());
                 int newStock = availableStock + quantity;
 
+                //Kadri's code to try to update csv file when updatestcok is called!
+                try {
+                    updateStockCSV(item.getItemName(), item.getItemSize(), item.getItemStock());
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
                 if((newStock) < 0) {
                     countText.setFill(Color.RED);
                 } else {
@@ -177,7 +183,6 @@ public class AdminController {
                     countText.setText("0");
                     countText.setFill(Color.BLACK);
                     stockTable.refresh();
-//                    updateStockCSV(itemName, size, newStock);
                 }
                 return;
             }
@@ -212,33 +217,41 @@ public class AdminController {
     }
 
     public void updateStockCSV(String itemName, String itemSize, int itemStock) throws IOException {
-        String itemText = "src/main/resources/com/example/minimalismfx/itemFile.csv";
-        Scanner scanner = new Scanner(itemText);
-        ArrayList<String> updatedCSVStock = new ArrayList<>();
+        String itemTextPath = "src/main/resources/com/example/minimalismfx/itemFile.csv";
 
-        while (scanner.hasNextLine()) {
-            String line = scanner.nextLine();
-            String[] fields = line.split(",");
+        // Read the existing CSV data and update it
+        try (BufferedReader reader = new BufferedReader(new FileReader(itemTextPath))) {
+            ArrayList<String> updatedCSVStock = new ArrayList<>();
 
-            //checking that name matches to specified item object
-            if (fields[0].equals(itemName) && fields[1].equals(itemSize)) {
-                fields[3] = Integer.toString(itemStock);
+            while (reader.ready()) {
+                String line = reader.readLine();
+                String[] fields = line.split(", ");
+
+                // Checking that name matches the specified item object and size
+                if (fields.length >= 4 && fields[0].equals(itemName) && fields[1].equals(itemSize)) {
+                    fields[3] = Integer.toString(itemStock);
+                }
+
+                // Add the updated or unchanged line to the temporary list
+                updatedCSVStock.add(String.join(",", fields));
             }
 
-            //Adding the updated stock to CSV stock arraylist
-            updatedCSVStock.add(String.join(",", fields));
+            // Write the updated data to the original file
+            FileWriter fileWriter = new FileWriter(itemTextPath);
+            for (String line : updatedCSVStock) {
+                fileWriter.write(line + "\n");
+            }
+
+            // Close the FileWriter
+            fileWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return; // Exit early if the file doesn't exist
+        } catch (IOException e) {
+            e.printStackTrace();
+            return; // Exit early if there's an issue writing the file
         }
-
-        scanner.close();
-
-        // Create a new FileWriter to write the updated CSV data to the file
-        FileWriter fileWriter = new FileWriter(itemText);
-
-        for (String line : updatedCSVStock) {
-            fileWriter.write(line + "\n");
-        }
-
-        fileWriter.close();
     }
+
 
 }

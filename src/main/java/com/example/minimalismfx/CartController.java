@@ -14,11 +14,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 public class CartController {
     @FXML
@@ -60,6 +61,7 @@ public class CartController {
 
     double totalPrice;
 
+    ArrayList<Item> itemStockList;
     private Admin admin = Admin.getInstance();
 
 
@@ -80,13 +82,26 @@ public class CartController {
 
     @FXML
     void setUpCheckoutHandler(ActionEvent event) throws IOException {
+        itemStockList = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
+
         // Check if the text fields are populated
         String fullName = cartNameTextField.getText();
         String cardDetails = cartCardDetailsTextField.getText();
         String address = cartAddressTextField.getText();
 
         if (!fullName.isEmpty() && !cardDetails.isEmpty() && !address.isEmpty()) {
-            // Create Order
+            // Update the CSV file with the new stock levels
+            for (Item item : itemStockList) {
+                try {
+                    updateStockCSV(item.getItemName(), item.getItemSize(), item.getItemStock());
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        else {
+            confirmationOfOrderText.setText("Please fill in all fields before checkout.");
+        }
             admin.recordOrder(fullName, orderDetails);
             // Log price of order
             admin.addToTotalSales(totalPrice);
@@ -96,13 +111,6 @@ public class CartController {
             scene = new Scene(root);
             stage.setScene(scene);
             // You can add your checkout logic here
-        } else {
-            confirmationOfOrderText.setText("Please fill in all fields before checkout.");
-        }
-
-//        String newItemName = itemClass.getItemName();
-//        String newItemSize = itemClass.getItemSize() ;
-//        int newItemStock = itemClass.getItemStock();
     }
 
     @FXML
@@ -122,9 +130,6 @@ public class CartController {
         stage.show();
 
     }
-
-
-
 
     @FXML
     void userAddressCartTextField(ActionEvent event) {
@@ -171,34 +176,41 @@ public class CartController {
         summaryOrderText.setText(String.valueOf(orderDetails));
 
     }
+    public void updateStockCSV(String itemName, String itemSize, int itemStock) throws IOException {
+        String itemTextPath = "src/main/resources/com/example/minimalismfx/itemFile.csv";
 
-//    @FXML
-//    void initializeElements() {
-//        totalPrice = cart.calculateTotalValueOfShoppingCart();
-//        cartTotalPriceText.setText("£" + totalPrice);
-//
-//        // Get the selected items
-//        ArrayList<String> selectedItems = cart.getSelectedItems();
-//
-//        // Create a StringBuilder to build the formatted order details
-//        StringBuilder orderDetailsBuilder = new StringBuilder();
-//
-//        // Iterate over the selected items and append them to the StringBuilder with newline characters
-//        for (String item : selectedItems) {
-//            orderDetailsBuilder.append(item).append("\n");
-//        }
-//
-//        // Remove the trailing newline character, if present
-//        if (orderDetailsBuilder.length() > 0) {
-//            orderDetailsBuilder.setLength(orderDetailsBuilder.length() - 1);
-//        }
-//
-//        orderDetails = orderDetailsBuilder.toString();
-//
-//        summaryOrderText.setText(String.valueOf(orderDetails));
-//
-//    }
+        // Read the existing CSV data and update it
+        try (BufferedReader reader = new BufferedReader(new FileReader(itemTextPath))) {
+            ArrayList<String> updatedCSVStock = new ArrayList<>();
 
+            while (reader.ready()) {
+                String line = reader.readLine();
+                String[] fields = line.split(", ");
 
+                // Checking that name matches the specified item object and size
+                if (fields.length >= 4 && fields[0].equals(itemName) && fields[1].equals(itemSize)) {
+                    fields[3] = Integer.toString(itemStock);
+                }
+
+                // Add the updated or unchanged line to the temporary list
+                updatedCSVStock.add(String.join(",", fields));
+            }
+
+            // Write the updated data to the original file
+            FileWriter fileWriter = new FileWriter(itemTextPath);
+            for (String line : updatedCSVStock) {
+                fileWriter.write(line + "\n");
+            }
+
+            // Close the FileWriter
+            fileWriter.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return; // Exit early if the file doesn't exist
+        } catch (IOException e) {
+            e.printStackTrace();
+            return; // Exit early if there's an issue writing the file
+        }
+    }
 
 }
