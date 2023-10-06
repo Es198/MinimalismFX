@@ -107,7 +107,7 @@ public class MinimalismController {
     private Parent root;
 
 
-    ShoppingCart cart = new ShoppingCart();
+
     ArrayList<Item> itemStockList;
 
 //    HashMap<Item, Integer> items;
@@ -142,6 +142,9 @@ public class MinimalismController {
         updateCounter("Trousers", trouserCounter,1);
     }
 
+    private Admin admin = Admin.getInstance();
+    private ShoppingCart cart = ShoppingCart.getInstance();
+
     public void initialize() throws FileNotFoundException {
         itemStockList = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
 
@@ -158,6 +161,9 @@ public class MinimalismController {
         sizeChoiceTrouser.getItems().add("Large");
 
     }
+
+
+
     @FXML
     void SetUpAddToCartJumper(ActionEvent event) throws FileNotFoundException {
         confirmAvailability(event);
@@ -238,8 +244,6 @@ public class MinimalismController {
         Parent rootParent =loader.load();
         Scene rootScene = new Scene(rootParent);
         CartController controller=loader.getController();
-        controller.setCart(cart);
-        controller.initialize(null, null);
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(rootScene);

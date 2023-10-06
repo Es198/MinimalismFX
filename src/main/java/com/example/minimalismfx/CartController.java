@@ -57,25 +57,13 @@ public class CartController {
 
     String orderDetails;
 
-    ShoppingCart cart;
-    Item itemClass;
-
-    Admin admin = new Admin();
+    ShoppingCart cart = ShoppingCart.getInstance();
 
     double totalPrice;
 
     ArrayList<Item> itemStockList;
+    private Admin admin = Admin.getInstance();
 
-    public CartController() {
-
-    }
-    public CartController(ShoppingCart cart) {
-        this.cart = cart;
-    }
-
-    public void setCart(ShoppingCart cart) {
-        this.cart = cart;
-    }
 
     public Text getSummaryOrderText() {
         return summaryOrderText;
@@ -163,7 +151,7 @@ public class CartController {
 
     }
     @FXML
-    void initialize(URL url, ResourceBundle resourceBundle) {
+    void initialize() {
         totalPrice = cart.calculateTotalValueOfShoppingCart();
         cartTotalPriceText.setText("£" + totalPrice);
 
@@ -224,6 +212,5 @@ public class CartController {
             return; // Exit early if there's an issue writing the file
         }
     }
-
 
 }

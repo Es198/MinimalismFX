@@ -105,11 +105,10 @@ public class AdminController {
     @FXML
     private TableColumn<Item, Double> itemStockCol;
 
-    ShoppingCart cart;
-    Admin admin;
+    ShoppingCart cart = ShoppingCart.getInstance();
     ArrayList<Item> items;
+    private Admin admin = Admin.getInstance();
 
-    Item itemClass;
 
 
     public void initialize() throws FileNotFoundException {
