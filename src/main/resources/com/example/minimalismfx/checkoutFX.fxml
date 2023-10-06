@@ -81,5 +81,7 @@
             <Image url="@youtube.png" />
          </image>
       </ImageView>
+      <Button fx:id="logoutButton" layoutX="258.0" layoutY="139.0" mnemonicParsing="false" onAction="#setUpLogout" text="Logout" />
+      <Button fx:id="backToHomeButton" layoutX="258.0" layoutY="50.0" mnemonicParsing="false" onAction="#setUpBackToHome" text="Back To Home" />
    </children>
 </AnchorPane>

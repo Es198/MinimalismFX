@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
@@ -40,6 +41,13 @@ public class CheckoutController {
     private ImageView movingVanImage;
 
     @FXML
+    private Button backToHomeButton;
+
+    @FXML
+    private Button logoutButton;
+
+
+    @FXML
     void initialize() {
         assert DisplayTextDeliveryTime != null : "fx:id=\"DisplayTextDeliveryTime\" was not injected: check your FXML file 'checkoutFX.fxml'.";
         assert DisplayTextDeliveryTime1 != null : "fx:id=\"DisplayTextDeliveryTime1\" was not injected: check your FXML file 'checkoutFX.fxml'.";
@@ -67,12 +75,15 @@ public class CheckoutController {
         stage.show();
 
     }
+
+ 
     @FXML
     void setUpLogout(ActionEvent event) throws IOException {
         FXMLLoader loader=new FXMLLoader();
         loader.setLocation(CheckoutController.class.getResource("LoginPageV2.fxml"));
         Parent rootParent =loader.load();
         Scene rootScene = new Scene(rootParent);
+
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(rootScene);
         stage.show();
