@@ -66,14 +66,12 @@ public class LoginPageController {
                 title = "Shopper Home Page";
                 root = loader.load();
                 MinimalismController minimalismController = loader.getController();
-                minimalismController.initializeElements();
 
             } else if (userType.equals("Staff")) {
                 loader = new FXMLLoader(getClass().getResource("adminPage.fxml"));
                 title = "Staff Home Page";
                 root = loader.load();
                 AdminController adminController = loader.getController();
-                adminController.initializeElements();
 
             } else {
                 System.out.println("Invalid login type.");

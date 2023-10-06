@@ -113,7 +113,7 @@ public class AdminController {
 
 
 
-    public void initializeElements() throws FileNotFoundException {
+    public void initialize() throws FileNotFoundException {
         items = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
         populateSizeChoiceBoxes();
         populateStockTable();

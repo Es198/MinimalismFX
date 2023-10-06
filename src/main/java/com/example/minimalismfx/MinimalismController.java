@@ -145,7 +145,7 @@ public class MinimalismController {
     private Admin admin = Admin.getInstance();
     private ShoppingCart cart = ShoppingCart.getInstance();
 
-    public void initializeElements() throws FileNotFoundException {
+    public void initialize() throws FileNotFoundException {
         itemStockList = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
 
         sizeChoiceTshirt.getItems().add("Small");
@@ -244,8 +244,6 @@ public class MinimalismController {
         Parent rootParent =loader.load();
         Scene rootScene = new Scene(rootParent);
         CartController controller=loader.getController();
-        controller.setAdminAndChart(admin, cart);
-        controller.initializeElements();
 
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(rootScene);
