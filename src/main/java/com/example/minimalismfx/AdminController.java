@@ -9,10 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -86,6 +83,9 @@ public class AdminController {
     private Text ordersList;
     @FXML
     private Button logoutButton;
+    @FXML
+    private TextArea textAreaID;
+
 
 
     @FXML
@@ -131,7 +131,7 @@ public class AdminController {
     }
 
     private void populateOrdersList() {
-        ordersList.setText(admin.displayAllOrders());
+        textAreaID.appendText(admin.displayAllOrders());
     }
 
 

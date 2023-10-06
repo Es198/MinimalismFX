@@ -12,7 +12,7 @@ public class MinimalismApplication extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(MinimalismApplication.class.getResource("LoginPageV2.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("MinimalismFX");
         stage.setScene(scene);
         stage.show();
     }
