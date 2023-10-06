@@ -35,8 +35,8 @@
          </image>
       </ImageView>
       <Button fx:id="backToHomeButton" layoutX="54.0" layoutY="36.0" mnemonicParsing="false" onAction="#setUpBackToHome" style="-fx-background-color: #0A0568;" text="Back To Home" textFill="#e4dede" />
-      <Button fx:id="logoutButton" layoutX="453.0" layoutY="35.0" mnemonicParsing="false" onAction="#setUpLogout" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: #56565A;" text="logout" textFill="#ece5e5" />
-      <ImageView fitHeight="68.0" fitWidth="68.0" layoutX="266.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
+      <Button fx:id="logoutButton" layoutX="453.0" layoutY="35.0" mnemonicParsing="false" onAction="#setUpLogout" prefHeight="26.0" prefWidth="93.0" style="-fx-background-color: #56565A;" text="Logout" textFill="#ece5e5" />
+      <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="263.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@tick.png" />
          </image>
@@ -81,7 +81,5 @@
             <Image url="@youtube.png" />
          </image>
       </ImageView>
-      <Button fx:id="logoutButton" layoutX="258.0" layoutY="139.0" mnemonicParsing="false" onAction="#setUpLogout" text="Logout" />
-      <Button fx:id="backToHomeButton" layoutX="258.0" layoutY="50.0" mnemonicParsing="false" onAction="#setUpBackToHome" text="Back To Home" />
    </children>
 </AnchorPane>
