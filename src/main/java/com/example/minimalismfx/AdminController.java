@@ -107,13 +107,13 @@ public class AdminController {
     @FXML
     private TableColumn<Item, Double> itemStockCol;
 
-    ShoppingCart cart = new ShoppingCart();
-    Admin admin = new Admin();
+    ShoppingCart cart = ShoppingCart.getInstance();
     ArrayList<Item> items;
+    private Admin admin = Admin.getInstance();
 
 
 
-    public void initialize() throws FileNotFoundException {
+    public void initializeElements() throws FileNotFoundException {
         items = cart.readingCSVFile("src/main/resources/com/example/minimalismfx/itemFile.csv");
         populateSizeChoiceBoxes();
         populateStockTable();

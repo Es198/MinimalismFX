@@ -28,6 +28,8 @@ public class LoginPageController {
     @FXML
     private TextField usernameField;
 
+
+
     @FXML
     private void initialize() {
         ObservableList<String> userTypes = FXCollections.observableArrayList("Staff", "Shopper");
@@ -57,18 +59,27 @@ public class LoginPageController {
             FXMLLoader loader;
             String title;
 
+            Parent root;
+
             if (userType.equals("Shopper")) {
                 loader = new FXMLLoader(getClass().getResource("minimalismFX.fxml"));
                 title = "Shopper Home Page";
+                root = loader.load();
+                MinimalismController minimalismController = loader.getController();
+                minimalismController.initializeElements();
+
             } else if (userType.equals("Staff")) {
                 loader = new FXMLLoader(getClass().getResource("adminPage.fxml"));
                 title = "Staff Home Page";
+                root = loader.load();
+                AdminController adminController = loader.getController();
+                adminController.initializeElements();
+
             } else {
                 System.out.println("Invalid login type.");
                 return;
             }
 
-           Parent root = loader.load();
             Stage stage = new Stage();
             stage.setTitle(title);
             stage.setScene(new Scene(root));

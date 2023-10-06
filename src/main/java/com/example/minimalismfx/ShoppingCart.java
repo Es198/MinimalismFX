@@ -12,7 +12,16 @@ public class ShoppingCart {
 
     ArrayList<Item> items = new ArrayList<>();
     HashMap<Item, Integer> cartItems = new HashMap<>();
-    ArrayList<String> selectedItems = new ArrayList<String>();
+    ArrayList<String> selectedItems = new ArrayList<>();
+
+    private static ShoppingCart instance;
+
+    public static ShoppingCart getInstance(){
+        if (instance == null) {
+            instance = new ShoppingCart();
+        }
+        return instance;
+    }
 
 
     public ArrayList<Item> readingCSVFile(String filePath) throws FileNotFoundException {
